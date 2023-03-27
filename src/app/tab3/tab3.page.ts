@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { STUDENT, StudentModel } from '../model/studentModel';
 
 @Component({
   selector: 'app-tab3',
@@ -8,9 +7,6 @@ import { STUDENT, StudentModel } from '../model/studentModel';
 })
 export class Tab3Page {
 
-  students: StudentModel[]
-  test: string="ASD"
-  
-  constructor() {this.students = STUDENT}
+  constructor() {}
 
 }
