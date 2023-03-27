@@ -9,7 +9,8 @@ import { STUDENT, StudentModel } from '../model/studentModel';
 export class Tab3Page {
 
   students: StudentModel[]
-test: string="ASD"
+  test: string="ASD"
+  
   constructor() {this.students = STUDENT}
 
 }

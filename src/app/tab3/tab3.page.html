@@ -13,12 +13,12 @@
     </ion-toolbar>
   </ion-header>
   <div>{{test}}</div>
-<ion-list>
-  <ion-item *ngFor="let student of students; let i = index">
-    <img src="student.imageUrl"/>
-    {{student.surname}}
-  </ion-item>
-</ion-list>
+  <ion-list>
+    <ion-item *ngFor="let student of students; let i = index">
+      <img src="student.imageUrl"/>
+      {{student.surname}}
+    </ion-item>
+  </ion-list>
 
 
   <app-explore-container name="Tab 3 page"></app-explore-container>
