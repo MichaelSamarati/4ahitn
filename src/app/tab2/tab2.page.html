@@ -14,11 +14,12 @@
   </ion-header>
 
   <div>Schüler</div>
-  <div>{{test}}</div>
   <ion-list>
     <ion-item *ngFor="let student of students; let i = index">
       <img src="student.imageUrl"/>
+      <ion-button [routerLink]="['./profile/'+student.id]">Go to detail</ion-button>
       {{student.surname}}
+      {{student.id}}
     </ion-item>
   </ion-list>
   <div>Lehrer</div>

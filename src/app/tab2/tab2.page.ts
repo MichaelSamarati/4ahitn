@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { STUDENT, StudentModel } from '../model/studentModel';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -9,8 +10,10 @@ import { STUDENT, StudentModel } from '../model/studentModel';
 export class Tab2Page {
 
   students: StudentModel[]
-  test: string="ASD"
   
+  //  constructor(private router: Router) {this.students = STUDENT}
+
   constructor() {this.students = STUDENT}
+
 
 }
