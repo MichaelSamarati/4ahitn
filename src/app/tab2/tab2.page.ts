@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { STUDENT, StudentModel } from '../model/studentModel';
+import { STUDENT, Student } from '../model/student';
 // import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +8,7 @@ import { STUDENT, StudentModel } from '../model/studentModel';
   styleUrls: ['tab2.page.scss'],
 })
 export class Tab2Page {
-  students: StudentModel[];
+  students: Student[];
 
   //  constructor(private router: Router) {this.students = STUDENT}
 

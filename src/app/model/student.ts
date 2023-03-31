@@ -1,4 +1,4 @@
-export class StudentModel {
+export class Student {
   id: string;
   name: string;
   birthday: Date;
@@ -23,8 +23,8 @@ export class StudentModel {
   }
 }
 
-export const STUDENT: StudentModel[] = [
-  new StudentModel(
+export const STUDENT: Student[] = [
+  new Student(
     '1',
     'Michael Samarati',
     new Date('2005-06-03T00:00:00'),
@@ -32,7 +32,7 @@ export const STUDENT: StudentModel[] = [
     'Lieber im Stehen scheißen, als in der Scheiße stehen',
     'ITP2'
   ),
-  new StudentModel(
+  new Student(
     '2',
     'Taisier Khalifa',
     new Date('2004-12-12T00:00:00'),
@@ -40,7 +40,7 @@ export const STUDENT: StudentModel[] = [
     '3 kleine Mäus, schau wie sie rennen. Sie rannten zur Bäuerin unverwand..  die nahm ein Großes Messer in die Hand und hackte den Mäusen die Schwänze ab .. Hast du schon mal sowas gesehen gehabt wie drei blinde mäus.',
     'NW2'
   ),
-  new StudentModel(
+  new Student(
     '3',
     'Philipp Vollmann',
     new Date('2004-02-11T00:00:00'),

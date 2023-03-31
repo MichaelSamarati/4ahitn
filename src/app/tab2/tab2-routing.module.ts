@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'profile/:id',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+    loadChildren: () => import('../profile/profile.module').then( m => m.ProfilePageModule)
   }
 ];
 
