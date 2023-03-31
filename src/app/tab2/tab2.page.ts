@@ -5,15 +5,14 @@ import { STUDENT, StudentModel } from '../model/studentModel';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  styleUrls: ['tab2.page.scss'],
 })
 export class Tab2Page {
+  students: StudentModel[];
 
-  students: StudentModel[]
-  
   //  constructor(private router: Router) {this.students = STUDENT}
 
-  constructor() {this.students = STUDENT}
-
-
+  constructor() {
+    this.students = STUDENT;
+  }
 }

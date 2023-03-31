@@ -1,25 +1,27 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Tab 2
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 2</ion-title>
     </ion-toolbar>
-  </ion-header>
+  </ion-header> -->
 
   <div>Schüler</div>
   <ion-list>
-    <ion-item *ngFor="let student of students; let i = index">
-      <img src="student.imageUrl"/>
-      <ion-button [routerLink]="['./profile/'+student.id]">Go to detail</ion-button>
-      {{student.surname}}
-      {{student.id}}
+    <ion-item
+      *ngFor="let student of students; let i = index"
+      [routerLink]="['./profile/'+student.id]"
+    >
+      <img src="student.imageUrl" />
+      <!-- <ion-button>Go to detail</ion-button> -->
+      {{student.name}}
     </ion-item>
   </ion-list>
   <div>Lehrer</div>
