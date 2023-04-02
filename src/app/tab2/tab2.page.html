@@ -1,7 +1,7 @@
-<ion-content [fullscreen]="true">
+<ion-content>
   <div class="mt-8"></div>
   <div class="mt-2 mb-2 text-3xl flex justify-center">Schüler</div>
-  <ion-list class="px-2">
+  <ion-list class="px-2 md:w-96 mx-auto">
     <ion-item
       *ngFor="let student of students; let i = index"
       [routerLink]="['./profile/'+student.id]"
@@ -10,17 +10,17 @@
     >
       <div
         class="square rounded-full flex justify-center items-center"
-        style="height: 86px; width: auto; margin: 6px"
+        style="height: 78px; width: auto; margin: 6px"
       >
         <ring
           [padding]="6"
-          [imageUrl]="student?.imageUrl"
+          [image]="student?.image"
           [favouriteSubject]="student?.favouriteSubject"
           [favouriteColor]="student?.favouriteColor"
           [phone]="student?.phone"
         ></ring>
       </div>
-      <div class="text-2xl">{{student.name}}</div>
+      <div class="text-xl">{{student.forename}} {{student.lastname}}</div>
     </ion-item>
   </ion-list>
   <div class="mt-2 mb-2 text-3xl flex justify-center">Lehrer</div>

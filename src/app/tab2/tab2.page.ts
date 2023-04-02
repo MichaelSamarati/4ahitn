@@ -1,15 +1,33 @@
-import { Component } from '@angular/core';
-import { STUDENT, Student } from '../model/student';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Student } from '../model/student';
+import { CommunicationService } from '../services/communication.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit, OnDestroy {
   students: Student[];
+  private subscriptions = new Subscription();
 
-  constructor() {
-    this.students = STUDENT;
+  constructor(private communicationService: CommunicationService) {
+    this.students = [];
+  }
+
+  ngOnInit() {
+    this.communicationService.requestStudents();
+    this.subscriptions.add(
+      this.communicationService
+        .waitForStudents()
+        .subscribe((students: Student[]) => {
+          this.students = students;
+        })
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 }

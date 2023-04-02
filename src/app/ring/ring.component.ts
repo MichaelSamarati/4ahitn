@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import {
   favouriteSubjectToColor,
   phoneToColor,
@@ -9,9 +9,9 @@ import {
   templateUrl: './ring.component.html',
   styleUrls: ['./ring.component.scss'],
 })
-export class RingComponent implements OnInit {
+export class RingComponent implements OnInit, OnChanges {
   @Input() padding: number | undefined;
-  @Input() imageUrl: string | undefined;
+  @Input() image: string | undefined;
   @Input() favouriteSubject: string | undefined;
   @Input() phone: string | undefined;
   @Input() favouriteColor: string | undefined;
@@ -20,7 +20,9 @@ export class RingComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit() {}
+
+  ngOnChanges() {
     this.favouriteSubjectColor = favouriteSubjectToColor(
       this.favouriteSubject!
     );

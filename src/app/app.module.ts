@@ -7,9 +7,20 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { CommonModule } from '@angular/common';
+
+const config: SocketIoConfig = { url: 'http://localhost:4135', options: {} };
+
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    SocketIoModule.forRoot(config),
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
