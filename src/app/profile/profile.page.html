@@ -1,9 +1,43 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Profile Page</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-<div>Profile Page</div>
+  <div class="flex flex-col p-2 w-full h-full items-center">
+    <div class="mt-8"></div>
+    <div
+      class="square rounded-full flex"
+      style="height: auto; width: 190px; margin: 6px"
+    >
+      <ring
+        [padding]="12"
+        [imageUrl]="profile?.imageUrl"
+        [favouriteSubject]="profile?.favouriteSubject"
+        [favouriteColor]="profile?.favouriteColor"
+        [phone]="profile?.phone"
+      ></ring>
+    </div>
+    <div class="text-3xl font-bold mx-auto mt-2">{{profile?.name}}</div>
+    <div class="text-xl font-bold mx-auto mt-1">
+      {{ profile?.birthday | date: 'dd.MM.yyyy' }}
+    </div>
+    <div class="mt-4 w-full justify-start md:w-96 mx-auto">
+      <app-attribute
+        [attributeName]="'Zitat'"
+        [attributeValue]="profile?.quote"
+        [attributeType]="'Text'"
+      ></app-attribute>
+      <app-attribute
+        [attributeName]="'Lieblingsfach'"
+        [attributeValue]="profile?.favouriteSubject"
+        [attributeType]="'Text'"
+      ></app-attribute>
+      <app-attribute
+        [attributeName]="'Lieblingsfarbe'"
+        [attributeValue]="profile?.favouriteColor"
+        [attributeType]="'Color'"
+      ></app-attribute>
+      <app-attribute
+        [attributeName]="'Handy'"
+        [attributeValue]="profile?.phone"
+        [attributeType]="'Text'"
+      ></app-attribute>
+    </div>
+  </div>
 </ion-content>

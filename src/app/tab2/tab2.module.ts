@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
-import { RingComponent } from '../ring/ring.component';
+import { RingModule } from '../ring/ring.module';
 
 @NgModule({
   imports: [
@@ -13,7 +13,8 @@ import { RingComponent } from '../ring/ring.component';
     CommonModule,
     FormsModule,
     Tab2PageRoutingModule,
+    RingModule,
   ],
-  declarations: [Tab2Page, RingComponent],
+  declarations: [Tab2Page],
 })
 export class Tab2PageModule {}

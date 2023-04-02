@@ -3,10 +3,18 @@
   [style.background]="
     'conic-gradient(' +
     favouriteSubjectColor +
-    ', #ff00FF,' +
+    ', ' +
+    favouriteColor +
+    ', ' +
+    phoneColor +
+    ', ' +
     favouriteSubjectColor +
     ')'
   "
 >
-  <img class="square rounded-full" style="padding: 6px" [src]="imageUrl" />
+  <img
+    class="h-[100%] square rounded-full"
+    [style]="'padding: '+padding+'px'"
+    [src]="imageUrl"
+  />
 </div>

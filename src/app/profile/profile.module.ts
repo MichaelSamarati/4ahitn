@@ -7,14 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { ProfilePageRoutingModule } from './profile-routing.module';
 
 import { ProfilePage } from './profile.page';
+import { RingModule } from '../ring/ring.module';
+import { AttributeModule } from '../attribute/attribute.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProfilePageRoutingModule
+    ProfilePageRoutingModule,
+    RingModule,
+    AttributeModule,
   ],
-  declarations: [ProfilePage]
+  declarations: [ProfilePage],
 })
 export class ProfilePageModule {}
