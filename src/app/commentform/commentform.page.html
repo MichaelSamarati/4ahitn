@@ -1,0 +1,44 @@
+<ion-content>
+  <div
+    class="flex flex-col p-2 w-full min-h-full md:w-medium-size-page mx-auto"
+  >
+    <div class="mt-8"></div>
+    <app-profileheader [profile]="profile"></app-profileheader>
+    <div class="mt-8 mb-2 text-2xl flex justify-center font-bold">
+      Kommentar
+    </div>
+    <ion-input
+      [(ngModel)]="name"
+      label="Pseudonym"
+      labelPlacement="floating"
+      type="text"
+      required="true"
+      maxlength="40"
+      placeholder="Pseudonym"
+      class="w-full m-0 bg-gray-800 rounded-lg p-0"
+      style="--padding-start: 10px; --padding-end: 10px"
+    ></ion-input>
+    <ion-textarea
+      [(ngModel)]="message"
+      label="Nachricht"
+      labelPlacement="floating"
+      type="text"
+      required="true"
+      maxlength="500"
+      placeholder="Nachricht"
+      [autoGrow]="true"
+      rows="5"
+      class="w-full m-0 mt-2 bg-gray-800 rounded-lg min-h-[50%]"
+      style="--padding-start: 10px; --padding-end: 10px"
+    ></ion-textarea>
+    <ion-button class="mx-auto mt-3 font-bold" color="light" (click)="submitComment()">
+      Bestätigen
+    </ion-button>
+    <!-- <ion-toast
+      trigger="true"
+      message="This toast will disappear after 5 seconds"
+      [duration]="5000"
+    ></ion-toast> -->
+    <div style="min-height: 100px; width: 100%; clear: both"></div>
+  </div>
+</ion-content>

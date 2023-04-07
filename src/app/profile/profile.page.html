@@ -1,11 +1,12 @@
 <ion-content>
-  <div class="flex flex-col p-2 w-full h-full items-center">
+  <div class="flex flex-col p-2 w-full min-h-full md:w-medium-size-page mx-auto">
     <div class="mt-8"></div>
-    <div
+    <!-- <div
       class="square rounded-full flex"
-      style="height: auto; width: 190px; margin: 6px"
+      style="height: auto; width: 160px; margin: 6px"
     >
       <ring
+        *ngIf="profile?.image"
         [padding]="12"
         [image]="profile?.image"
         [favouriteSubject]="profile?.favouriteSubject"
@@ -18,12 +19,67 @@
     </div>
     <div class="text-xl font-bold mx-auto mt-1">
       {{ profile?.birthday | date: 'dd.MM.yyyy' }}
-    </div>
-    <div class="mt-4 w-full justify-start md:w-96 mx-auto">
+    </div> -->
+    <app-profileheader [profile]="profile"></app-profileheader>
+    <div class="mt-4 w-full">
+      <app-attribute
+        *ngIf="profile?.eyeColor"
+        [attributeName]="'Augenfarbe'"
+        [attributeValue]="profile?.eyeColor"
+        [attributeType]="'Color'"
+      ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.piercingTattoos"
+        [attributeName]="'Piercings/Tattoos'"
+        [attributeValue]="profile?.piercingTattoos"
+        [attributeType]="'Text'"
+      ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.favouriteSong"
+        [attributeName]="'Lieblingslied'"
+        [attributeValue]="profile?.favouriteSong"
+        [attributeType]="'Text'"
+      ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.chickenCrossReason"
+        [attributeName]="'WHY did the chicken cross the road?'"
+        [attributeValue]="profile?.chickenCrossReason"
+        [attributeType]="'Text'"
+      ></app-attribute>
       <app-attribute
         *ngIf="profile?.quote"
         [attributeName]="'Zitat'"
         [attributeValue]="profile?.quote"
+        [attributeType]="'Text'"
+      ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.hobbies"
+        [attributeName]="'Hobbys'"
+        [attributeValue]="profile?.hobbies"
+        [attributeType]="'Text'"
+      ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.pets"
+        [attributeName]="'Haustiere'"
+        [attributeValue]="profile?.pets"
+        [attributeType]="'Text'"
+      ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.allergies"
+        [attributeName]="'Allergien'"
+        [attributeValue]="profile?.allergies"
+        [attributeType]="'Text'"
+      ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.schoolBeforeHTL"
+        [attributeName]="'Schule vor der HTL'"
+        [attributeValue]="profile?.schoolBeforeHTL"
+        [attributeType]="'Text'"
+      ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.burgerPizzaAvocado"
+        [attributeName]="'🍔🍕🥑'"
+        [attributeValue]="profile?.burgerPizzaAvocado"
         [attributeType]="'Text'"
       ></app-attribute>
       <app-attribute
@@ -33,17 +89,49 @@
         [attributeType]="'Text'"
       ></app-attribute>
       <app-attribute
-        *ngIf="profile?.favouriteColor"
-        [attributeName]="'Lieblingsfarbe'"
-        [attributeValue]="profile?.favouriteColor"
-        [attributeType]="'Color'"
-      ></app-attribute>
-      <app-attribute
         *ngIf="profile?.phone"
         [attributeName]="'Handy'"
         [attributeValue]="profile?.phone"
         [attributeType]="'Text'"
       ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.favouriteFood"
+        [attributeName]="'Lieblingsessen'"
+        [attributeValue]="profile?.favouriteFood"
+        [attributeType]="'Text'"
+      ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.favouriteMedia"
+        [attributeName]="'Lieblingsserie/-film'"
+        [attributeValue]="profile?.favouriteMedia"
+        [attributeType]="'Text'"
+      ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.specialClassFunction"
+        [attributeName]="'Spezialfunktion in der Klasse'"
+        [attributeValue]="profile?.specialClassFunction"
+        [attributeType]="'Text'"
+      ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.socialmedia"
+        [attributeName]="'Social-Media'"
+        [attributeValue]="profile?.socialmedia"
+        [attributeType]="'Text'"
+      ></app-attribute>
     </div>
+    <div style="min-height: 50px; width: 100%; clear: both"></div>
+    <div class="mt-4 w-full justify-start">
+      <app-comments [comments]="comments"></app-comments>
+    </div>
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end" class="fixed">
+      <ion-fab-button
+        color="light"
+        [routerLink]="['./comment']"
+        [state]="{profile: profile}"
+      >
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    <div style="min-height: 100px; width: 100%; clear: both"></div>
   </div>
 </ion-content>

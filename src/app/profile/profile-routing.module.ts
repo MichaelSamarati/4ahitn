@@ -6,8 +6,15 @@ import { ProfilePage } from './profile.page';
 const routes: Routes = [
   {
     path: '',
-    component: ProfilePage
-  }
+    component: ProfilePage,
+  },
+  {
+    path: 'comment',
+    loadChildren: () =>
+      import('../commentform/commentform.module').then(
+        (m) => m.CommentformPageModule
+      ),
+  },
 ];
 
 @NgModule({

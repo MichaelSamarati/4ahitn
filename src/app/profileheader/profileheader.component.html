@@ -1,0 +1,21 @@
+<div class="flex flex-col p-2 w-full h-full items-center">
+  <div
+    class="square rounded-full flex"
+    style="height: auto; width: 160px; margin: 6px"
+  >
+    <ring
+      *ngIf="profile?.image"
+      [padding]="12"
+      [image]="profile?.image"
+      [favouriteSubject]="profile?.favouriteSubject"
+      [favouriteColor]="profile?.favouriteColor"
+      [phone]="profile?.phone"
+    ></ring>
+  </div>
+  <div class="text-3xl font-bold mx-auto mt-2">
+    {{ profile?.forename }} {{ profile?.lastname }}
+  </div>
+  <div class="text-xl font-bold mx-auto mt-1">
+    {{ profile?.birthday | date : "dd.MM.yyyy" }}
+  </div>
+</div>

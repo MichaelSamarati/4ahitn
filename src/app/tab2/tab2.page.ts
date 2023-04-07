@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class Tab2Page implements OnInit, OnDestroy {
   students: Student[];
-  private subscriptions = new Subscription();
+  subscriptions = new Subscription();
 
   constructor(private communicationService: CommunicationService) {
     this.students = [];

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -10,7 +10,10 @@ import { AppComponent } from './app.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { CommonModule } from '@angular/common';
 
-const config: SocketIoConfig = { url: 'http://localhost:4135', options: {} };
+const config: SocketIoConfig = {
+  url: 'http://10.0.0.34:80',
+  options: {},
+};
 
 @NgModule({
   declarations: [AppComponent],

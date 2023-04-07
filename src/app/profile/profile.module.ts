@@ -9,6 +9,8 @@ import { ProfilePageRoutingModule } from './profile-routing.module';
 import { ProfilePage } from './profile.page';
 import { RingModule } from '../ring/ring.module';
 import { AttributeModule } from '../attribute/attribute.module';
+import { CommentsModule } from '../comments/comments.module';
+import { ProfileheaderModule } from '../profileheader/profileheader.module';
 
 @NgModule({
   imports: [
@@ -18,6 +20,8 @@ import { AttributeModule } from '../attribute/attribute.module';
     ProfilePageRoutingModule,
     RingModule,
     AttributeModule,
+    CommentsModule,
+    ProfileheaderModule,
   ],
   declarations: [ProfilePage],
 })

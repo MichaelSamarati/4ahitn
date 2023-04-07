@@ -10,6 +10,9 @@ export class AttributeComponent implements OnInit {
   @Input() attributeValue: string | undefined;
   @Input() attributeType: string | undefined;
 
+  TYPE_TEXT: string = 'Text';
+  TYPE_COLOR: string = 'Color';
+
   constructor() {}
 
   ngOnInit() {}

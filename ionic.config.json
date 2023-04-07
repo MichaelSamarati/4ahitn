@@ -1,5 +1,7 @@
 {
   "name": "4ahitn",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

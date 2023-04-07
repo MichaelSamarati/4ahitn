@@ -1,27 +1,33 @@
 <ion-content>
-  <div class="mt-8"></div>
-  <div class="mt-2 mb-2 text-3xl flex justify-center">Schüler</div>
-  <ion-list class="px-2 md:w-96 mx-auto">
-    <ion-item
-      *ngFor="let student of students; let i = index"
-      [routerLink]="['./profile/'+student.id]"
-      class="w-full my-2 rounded-2xl"
-      style="--padding-start: 0; --ion-item-background: #333333"
-    >
-      <div
-        class="square rounded-full flex justify-center items-center"
-        style="height: 78px; width: auto; margin: 6px"
+  <div class="flex flex-col p-2 w-full min-h-full md:w-medium-size-page mx-auto">
+    <div class="mt-8"></div>
+    <div class="mt-2 mb-2 text-3xl flex justify-center font-bold">Schüler</div>
+    <ion-list class="px-2">
+      <ion-item
+        *ngFor="let student of students; let i = index"
+        [routerLink]="['./profile/'+student.studentid]"
+        class="w-full my-2 rounded-2xl"
+        style="
+          --padding-start: 0;
+          --inner-padding-end: 0px;
+          --ion-item-background: #333333;
+        "
       >
-        <ring
-          [padding]="6"
-          [image]="student?.image"
-          [favouriteSubject]="student?.favouriteSubject"
-          [favouriteColor]="student?.favouriteColor"
-          [phone]="student?.phone"
-        ></ring>
-      </div>
-      <div class="text-xl">{{student.forename}} {{student.lastname}}</div>
-    </ion-item>
-  </ion-list>
-  <div class="mt-2 mb-2 text-3xl flex justify-center">Lehrer</div>
+        <div
+          class="square rounded-full flex justify-center items-center"
+          style="height: 78px; width: auto; margin: 6px"
+        >
+          <ring
+            [padding]="6"
+            [image]="student?.image"
+            [favouriteSubject]="student?.favouriteSubject"
+            [favouriteColor]="student?.favouriteColor"
+            [phone]="student?.phone"
+          ></ring>
+        </div>
+        <div class="text-xl">{{student.forename}} {{student.lastname}}</div>
+      </ion-item>
+    </ion-list>
+    <div class="mt-2 mb-2 text-3xl flex justify-center font-bold">Lehrer</div>
+  </div>
 </ion-content>

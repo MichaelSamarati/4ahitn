@@ -8,7 +8,7 @@ favouriteSubjectMap.set('WIR_3', 'purple');
 var phoneMap = new Map<string, string>();
 phoneMap.set('IOS', '#8acaff');
 phoneMap.set('Android', '#32de84');
-phoneMap.set('Windows Phone', '#fa6800');
+phoneMap.set('Windows-Phone', '#fa6800');
 
 function favouriteSubjectToColor(favouriteSubject: string) {
   let color = favouriteSubjectMap.get(favouriteSubject);

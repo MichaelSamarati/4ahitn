@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HostListener } from '@angular/core';
 
 import { Student } from '../model/student';
 import { CommunicationService } from '../services/communication.service';
 import { Subscription } from 'rxjs';
+import { Comment } from '../model/comment';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +14,8 @@ import { Subscription } from 'rxjs';
 })
 export class ProfilePage implements OnInit, OnDestroy {
   profile: Student | undefined;
-  private subscriptions = new Subscription();
+  comments: Comment[] | undefined;
+  subscriptions = new Subscription();
 
   constructor(
     private route: ActivatedRoute,
@@ -30,8 +33,24 @@ export class ProfilePage implements OnInit, OnDestroy {
           this.profile = student;
         })
     );
+    this.communicationService.requestComments(profileIdFromRoute);
+    this.subscriptions.add(
+      this.communicationService
+        .waitForComments()
+        .subscribe((comments: Comment[]) => {
+          this.comments = comments;
+        })
+    );
   }
+
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
+  }
+
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event: any) {
+    // location.reload();
+    this.communicationService.requestComments(this.profile?.studentid);
+    // this.communicationService.requestStudent(this.profile?.studentid);
   }
 }

@@ -5,7 +5,11 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },  {
+    path: 'commentform',
+    loadChildren: () => import('./commentform/commentform.module').then( m => m.CommentformPageModule)
   }
+
 ];
 @NgModule({
   imports: [
