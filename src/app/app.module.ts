@@ -11,9 +11,11 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { CommonModule } from '@angular/common';
 
 const config: SocketIoConfig = {
-  url: 'http://10.0.0.34:80',
+  url: 'http://188.22.60.224:80',
   options: {},
 };
+
+console.log(config)
 
 @NgModule({
   declarations: [AppComponent],
