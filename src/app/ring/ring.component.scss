@@ -1,0 +1,24 @@
+@keyframes ringrotation {
+  0% {
+    transform: rotate(359deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes counterringrotation {
+  0% {
+    transform: rotate(-359deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.profile-ring-rotation-animation {
+  animation: ringrotation 1.5s 1 ease-in-out 0.1s;
+}
+
+.counter-profile-ring-rotation-animation {
+  animation: counterringrotation 1.5s 1 ease-in-out 0.1s;
+}

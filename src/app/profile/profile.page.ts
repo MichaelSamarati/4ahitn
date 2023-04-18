@@ -49,8 +49,6 @@ export class ProfilePage implements OnInit, OnDestroy {
 
   @HostListener('window:popstate', ['$event'])
   onPopState(event: any) {
-    // location.reload();
     this.communicationService.requestComments(this.profile?.studentid);
-    // this.communicationService.requestStudent(this.profile?.studentid);
   }
 }

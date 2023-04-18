@@ -1,5 +1,5 @@
 <div
-  class="h-[100%] square rounded-full flex justify-center items-center"
+  class="profile-ring-rotation-animation h-[100%] square rounded-full flex justify-center items-center"
   [style.background]="
     'conic-gradient(' +
     favouriteSubjectColor +
@@ -11,9 +11,10 @@
     favouriteSubjectColor +
     ')'
   "
+  (click)="replayProfileRingRotationAnimation()"
 >
   <img
-    class="h-[100%] square rounded-full"
+    class="counter-profile-ring-rotation-animation h-[100%] square rounded-full"
     [style]="'padding: ' + padding + 'px'"
     [src]="
       'data:image/jpg;base64, ' + image ||

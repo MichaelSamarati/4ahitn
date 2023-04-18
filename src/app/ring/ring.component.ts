@@ -28,4 +28,22 @@ export class RingComponent implements OnInit, OnChanges {
     );
     this.phoneColor = phoneToColor(this.phone!);
   }
+
+  replayProfileRingRotationAnimation() {
+    (async () => {
+      const ring: any = document.querySelector(
+        '.profile-ring-rotation-animation'
+      );
+      const img: any = document.querySelector(
+        '.counter-profile-ring-rotation-animation'
+      );
+      ring.classList.remove('profile-ring-rotation-animation');
+      img.classList.remove('counter-profile-ring-rotation-animation');
+
+      await new Promise((f) => setTimeout(f, 0));
+
+      ring.classList.add('profile-ring-rotation-animation');
+      img.classList.add('counter-profile-ring-rotation-animation');
+    })();
+  }
 }
