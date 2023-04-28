@@ -17,7 +17,6 @@ export class Tab2Page implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.communicationService.requestStudents();
     this.subscriptions.add(
       this.communicationService
         .waitForStudents()
@@ -31,3 +30,4 @@ export class Tab2Page implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe();
   }
 }
+

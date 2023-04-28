@@ -15,8 +15,6 @@ const config: SocketIoConfig = {
   options: {},
 };
 
-console.log(config)
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
