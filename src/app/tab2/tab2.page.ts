@@ -30,4 +30,3 @@ export class Tab2Page implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe();
   }
 }
-

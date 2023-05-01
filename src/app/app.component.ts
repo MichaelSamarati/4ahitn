@@ -18,13 +18,13 @@ export class AppComponent {
 
   ngOnInit() {
     this.communicationService.requestStudents();
-    this.subscriptions.add(
-      this.communicationService
-        .waitForStudents()
-        .subscribe((students: Student[]) => {
-          this.students = students;
-        })
-    );
+    // this.subscriptions.add(
+    //   this.communicationService
+    //     .waitForStudents()
+    //     .subscribe((students: Student[]) => {
+    //       this.students = students;
+    //     })
+    // );
   }
 
   ngOnDestroy() {

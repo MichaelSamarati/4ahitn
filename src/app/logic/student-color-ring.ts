@@ -1,29 +1,47 @@
 const defaultColor = '#777777';
 
 var favouriteSubjectMap = new Map<string, string>();
-favouriteSubjectMap.set('ITP2', 'red');
+favouriteSubjectMap.set('D', 'red');
+favouriteSubjectMap.set('AM', 'orange');
+favouriteSubjectMap.set('E1', 'yellow');
+favouriteSubjectMap.set('ITP2', 'Lime');
 favouriteSubjectMap.set('NW2', 'green');
-favouriteSubjectMap.set('WIR_3', 'purple');
+favouriteSubjectMap.set('SEW', 'cyan');
+favouriteSubjectMap.set('NWT1', 'blue');
+favouriteSubjectMap.set('GGP', 'purple');
+favouriteSubjectMap.set('WIR2', 'indigo');
+favouriteSubjectMap.set('WIR3', 'magenta');
+favouriteSubjectMap.set('BSPK', '#DE3163');
+favouriteSubjectMap.set('INSY', 'pink');
 
 var phoneMap = new Map<string, string>();
-phoneMap.set('IOS', '#8acaff');
+phoneMap.set('iOS', '#8acaff');
 phoneMap.set('Android', '#32de84');
 phoneMap.set('Windows-Phone', '#fa6800');
 
+var burgerPizzaAvocadoMap = new Map<string, string>();
+burgerPizzaAvocadoMap.set('🍕', '#fb8b23');
+burgerPizzaAvocadoMap.set('🍔', '#88472e');
+burgerPizzaAvocadoMap.set('🥑', '#87a922');
+
 function favouriteSubjectToColor(favouriteSubject: string) {
-  let color = favouriteSubjectMap.get(favouriteSubject);
-  if (!color) {
-    color = defaultColor;
-  }
-  return color;
+  return attributeToColor(favouriteSubject, favouriteSubjectMap);
 }
 
 function phoneToColor(phone: string) {
-  let color = phoneMap.get(phone);
+  return attributeToColor(phone, phoneMap);
+}
+
+function burgerPizzaAvocadoToColor(burgerPizzaAvocado: string) {
+  return attributeToColor(burgerPizzaAvocado, burgerPizzaAvocadoMap);
+}
+
+function attributeToColor(attribute: string, map: Map<string, string>) {
+  let color = map.get(attribute);
   if (!color) {
     color = defaultColor;
   }
   return color;
 }
 
-export { favouriteSubjectToColor, phoneToColor };
+export { favouriteSubjectToColor, phoneToColor, burgerPizzaAvocadoToColor };

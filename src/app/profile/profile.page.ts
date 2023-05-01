@@ -25,12 +25,11 @@ export class ProfilePage implements OnInit, OnDestroy {
   ngOnInit() {
     const routeParams = this.route.snapshot.paramMap;
     const profileIdFromRoute = routeParams.get('id');
-    this.communicationService.requestStudent(profileIdFromRoute);
     this.subscriptions.add(
       this.communicationService
-        .waitForStudent()
-        .subscribe((student: Student) => {
-          this.profile = student;
+        .waitForStudents()
+        .subscribe((students: Student[]) => {
+          this.profile = students.find(x => x.studentid==profileIdFromRoute);
         })
     );
     this.communicationService.requestComments(profileIdFromRoute);

@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import {
   favouriteSubjectToColor,
   phoneToColor,
+  burgerPizzaAvocadoToColor,
 } from '../logic/student-color-ring';
 
 @Component({
@@ -14,9 +15,11 @@ export class RingComponent implements OnInit, OnChanges {
   @Input() image: string | undefined;
   @Input() favouriteSubject: string | undefined;
   @Input() phone: string | undefined;
+  @Input() burgerPizzaAvocado: string | undefined;
   @Input() favouriteColor: string | undefined;
   favouriteSubjectColor: string | undefined;
   phoneColor: string | undefined;
+  burgerPizzaAvocadoColor: string | undefined;
 
   constructor() {}
 
@@ -27,6 +30,7 @@ export class RingComponent implements OnInit, OnChanges {
       this.favouriteSubject!
     );
     this.phoneColor = phoneToColor(this.phone!);
+    this.burgerPizzaAvocadoColor = burgerPizzaAvocadoToColor(this.burgerPizzaAvocado!);
   }
 
   replayProfileRingRotationAnimation() {

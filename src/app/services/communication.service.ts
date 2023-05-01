@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { BehaviorSubject } from 'rxjs';
 import { Comment } from '../model/comment';
+import { Student } from '../model/student';
 
 @Injectable({
   providedIn: 'root',
@@ -20,21 +21,21 @@ export class CommunicationService {
 
   waitForStudents() {
     this.socket.on('students_success', (msg: any) => {
-      this.students.next(msg);
+      this.students.next([...this.students.value, msg]);
     });
     return this.students.asObservable();
   }
 
-  requestStudent(id: any) {
-    this.socket.emit('student', { id });
-  }
+  // requestStudent(id: any) {
+  //   this.socket.emit('student', { id });
+  // }
 
-  waitForStudent() {
-    this.socket.on('student_success', (msg: any) => {
-      this.student.next(msg);
-    });
-    return this.student.asObservable();
-  }
+  // waitForStudent() {
+  //   this.socket.on('student_success', (msg: any) => {
+  //     this.student.next(msg);
+  //   });
+  //   return this.student.asObservable();
+  // }
 
   requestComments(id: any) {
     this.socket.emit('comments', { id });
