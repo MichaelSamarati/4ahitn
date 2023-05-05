@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
-import { RingModule } from '../ring/ring.module';
+import { ProfileCardItemModule } from '../profile-card-item/profile-card-item.module';
+import { BackgroundModule } from '../background/background.module';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { RingModule } from '../ring/ring.module';
     CommonModule,
     FormsModule,
     Tab2PageRoutingModule,
-    RingModule,
+    ProfileCardItemModule,
+    BackgroundModule,
   ],
   declarations: [Tab2Page],
 })

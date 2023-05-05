@@ -1,0 +1,19 @@
+<div id="spaceBackground" class="w-full h-full fixed">
+  <div class="relative w-full h-full space-color"></div>
+  <div
+    *ngFor="let star of stars; let i = index"
+    class="star-color absolute top-0 left-0 rounded-full"
+    [style]="
+      'width: ' +
+      star.getDiameter() +
+      'px; height: ' +
+      star.getDiameter() +
+      'px; ' +
+      'top: calc(' +
+      star.getOffsetY() +
+      'px + 50%); left: calc(' +
+      star.getOffsetX() +
+      'px + 50%)'
+    "
+  ></div>
+</div>

@@ -3,6 +3,7 @@ import { Student } from '../model/student';
 import { CommunicationService } from '../services/communication.service';
 import { Subscription } from 'rxjs';
 
+
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
