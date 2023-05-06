@@ -11,5 +11,19 @@ export class ProfileCardItemComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const profileCardItemComponents = document.getElementsByClassName(
+      'profileCardItemComponent'
+    );
+    for (let i = 0; i < profileCardItemComponents.length; i++) {
+      let c = profileCardItemComponents[i];
+      c.addEventListener(
+        'animationend',
+        () => {
+          c.classList.remove('opacity-0');
+        },
+        { once: true }
+      );
+    }
+  }
 }

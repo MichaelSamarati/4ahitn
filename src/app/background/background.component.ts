@@ -11,7 +11,7 @@ export class BackgroundComponent implements OnInit {
   updateDeltaTime: number;
   constructor() {
     this.stars = [];
-    this.starCount = 100;
+    this.starCount = 140;
     this.updateDeltaTime = 16;
   }
 
@@ -21,7 +21,6 @@ export class BackgroundComponent implements OnInit {
     for (let i = 0; i < this.starCount; i++) {
       this.stars.push(new Star());
     }
-    console.log(this.stars);
     setInterval(() => {
       for (let i = 0; i < this.stars.length; i++) {
         this.stars[i].update();
@@ -33,11 +32,11 @@ class Star {
   x: number;
   y: number;
   z: number;
-  static LEFT_WIDTH: number = -2000;
-  static RIGHT_WIDTH: number = 2000;
-  static TOP_HEIGHT: number = -2000;
-  static BOTTOM_HEIGHT: number = 2000;
-  static Z: number = 2000;
+  static LEFT_WIDTH: number = -4000;
+  static RIGHT_WIDTH: number = 4000;
+  static TOP_HEIGHT: number = -4000;
+  static BOTTOM_HEIGHT: number = 4000;
+  static Z: number = 2800;
 
   constructor() {
     this.x = this.randomIntFromInterval(Star.LEFT_WIDTH, Star.RIGHT_WIDTH);

@@ -7,15 +7,15 @@
     <div class="mt-2 mb-2 text-3xl flex justify-center font-bold z-10">
       4AHITN Schüler
     </div>
-    <ion-list class="px-1 bg-transparent">
+    <ion-list class="bg-transparent" style="padding-left: 12px; padding-right: 12px">
       <app-profile-card-item
         *ngFor="let student of students; let i = index"
         [profile]="student"
       ></app-profile-card-item>
     </ion-list>
-    <div class="mt-2 mb-2 text-3xl flex justify-center font-bold">
+    <!-- <div class="mt-2 mb-2 text-3xl flex justify-center font-bold">
       4AHITN Lehrer
-    </div>
-    <div class="mt-8"></div>
+    </div> -->
+    <div class="mt-16"></div>
   </div>
 </ion-content>
