@@ -11,6 +11,7 @@ import { RingModule } from '../ring/ring.module';
 import { AttributeModule } from '../attribute/attribute.module';
 import { CommentsModule } from '../comments/comments.module';
 import { ProfileheaderModule } from '../profileheader/profileheader.module';
+import { MovingBackgroundModule } from '../moving-background/moving-background.module';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { ProfileheaderModule } from '../profileheader/profileheader.module';
     AttributeModule,
     CommentsModule,
     ProfileheaderModule,
+    MovingBackgroundModule
   ],
   declarations: [ProfilePage],
 })

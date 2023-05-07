@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Student } from '../model/student';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-card-item',
@@ -9,9 +10,29 @@ import { Student } from '../model/student';
 export class ProfileCardItemComponent implements OnInit {
   @Input() profile: Student | undefined;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
+    this.setOpacityStuff();
+    // this.router.events.subscribe((val) => {
+    //   const profileCardItemComponents = document.getElementsByClassName(
+    //     'profileCardItemComponent'
+    //   );
+    //   for (let i = 0; i < profileCardItemComponents.length; i++) {
+    //     let c = profileCardItemComponents[i];
+    //     c.classList.add('opacity-0');
+    //     c.addEventListener(
+    //       'animationend',
+    //       () => {
+    //         c.classList.remove('opacity-0');
+    //       },
+    //       { once: true }
+    //     );
+    //   }
+    // });
+  }
+
+  setOpacityStuff() {
     const profileCardItemComponents = document.getElementsByClassName(
       'profileCardItemComponent'
     );
