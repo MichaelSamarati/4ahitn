@@ -16,6 +16,7 @@ export class CommunicationService {
   constructor(private socket: Socket) {}
 
   requestStudents() {
+    this.students.next([]);
     this.socket.emit('students', {});
   }
 

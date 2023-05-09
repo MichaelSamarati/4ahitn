@@ -4,8 +4,8 @@
     class="flex flex-col p-2 w-full min-h-full md:w-medium-size-page mx-auto"
   >
     <div class="mt-8"></div>
-    <app-profileheader [profile]="profile" class="z-30"></app-profileheader>
-    <div class="mt-4 w-full z-30">
+    <app-profileheader [profile]="profile"></app-profileheader>
+    <div class="mt-4 w-full">
       <app-attribute
         *ngIf="profile?.eyeColor"
         [attributeName]="'Augenfarbe'"
@@ -104,7 +104,7 @@
       ></app-attribute>
     </div>
     <div style="min-height: 50px; width: 100%; clear: both"></div>
-    <div class="mt-4 w-full justify-start z-30">
+    <div class="mt-4 w-full justify-start">
       <app-comments [comments]="comments"></app-comments>
     </div>
     <ion-fab slot="fixed" vertical="bottom" horizontal="end" class="fixed">

@@ -15,12 +15,11 @@ export class Tab2Page implements OnInit, OnDestroy {
   range: number;
 
   constructor(private communicationService: CommunicationService) {
-    this.availableStudents = [];
-    this.students = [];
-    this.range = 0;
+    this.clear();
   }
 
   ngOnInit() {
+    this.clear();
     this.communicationService.requestStudents();
     this.subscriptions.add(
       this.communicationService
@@ -41,6 +40,12 @@ export class Tab2Page implements OnInit, OnDestroy {
         }
       }, 150);
     }, 50);
+  }
+
+  clear(){
+    this.availableStudents = [];
+    this.students = [];
+    this.range = 0;
   }
 
   ngOnDestroy() {
