@@ -6,12 +6,13 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./attribute.component.scss'],
 })
 export class AttributeComponent implements OnInit {
+  @Input() attributeIcon: string | undefined;
   @Input() attributeName: string | undefined;
   @Input() attributeValue: string | undefined;
   @Input() attributeType: string | undefined;
 
-  TYPE_TEXT: string = 'Text';
-  TYPE_COLOR: string = 'Color';
+  static TYPE_TEXT: string = 'Text';
+  static TYPE_COLOR: string = 'Color';
 
   constructor() {}
 

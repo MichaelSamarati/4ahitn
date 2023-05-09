@@ -1,6 +1,14 @@
 <div class="mt-4 w-full justify-start">
   <div class="me-auto py-1 px-3 bg-gray-600 rounded-lg w-min whitespace-nowrap">
-    {{ attributeName }}
+    <img
+    *ngIf="attributeIcon"
+    class="h-[100%] square"
+    [style]="'padding: ' + 0 + 'px'"
+    [src]="
+     '../../assets/'+attributeIcon
+    "
+  />
+    <p>{{ attributeName }}</p>
   </div>
   <div
     *ngIf="attributeType === 'Text'"

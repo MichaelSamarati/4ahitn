@@ -8,96 +8,119 @@
     <div class="mt-4 w-full">
       <app-attribute
         *ngIf="profile?.eyeColor"
+        [attributeIcon]="'eye.png'"
         [attributeName]="'Augenfarbe'"
         [attributeValue]="profile?.eyeColor"
         [attributeType]="'Color'"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.piercingTattoos"
+        [attributeIcon]="''"
         [attributeName]="'Piercings/Tattoos'"
         [attributeValue]="profile?.piercingTattoos"
         [attributeType]="'Text'"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.favouriteSong"
+        [attributeIcon]="''"
         [attributeName]="'Lieblingslied'"
         [attributeValue]="profile?.favouriteSong"
         [attributeType]="'Text'"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.chickenCrossReason"
+        [attributeIcon]="''"
         [attributeName]="'WHY did the chicken cross the road?'"
         [attributeValue]="profile?.chickenCrossReason"
         [attributeType]="'Text'"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.quote"
+        [attributeIcon]="''"
         [attributeName]="'Zitat'"
         [attributeValue]="profile?.quote"
         [attributeType]="'Text'"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.hobbies"
+        [attributeIcon]="''"
         [attributeName]="'Hobbys'"
         [attributeValue]="profile?.hobbies"
         [attributeType]="'Text'"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.pets"
+        [attributeIcon]="''"
         [attributeName]="'Haustiere'"
         [attributeValue]="profile?.pets"
         [attributeType]="'Text'"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.allergies"
+        [attributeIcon]="''"
         [attributeName]="'Allergien'"
         [attributeValue]="profile?.allergies"
         [attributeType]="'Text'"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.schoolBeforeHTL"
+        [attributeIcon]="''"
         [attributeName]="'Schule vor der HTL'"
         [attributeValue]="profile?.schoolBeforeHTL"
         [attributeType]="'Text'"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.burgerPizzaAvocado"
+        [attributeIcon]="''"
         [attributeName]="'🍔🍕🥑'"
         [attributeValue]="profile?.burgerPizzaAvocado"
         [attributeType]="'Text'"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.favouriteSubject"
+        [attributeIcon]="''"
         [attributeName]="'Lieblingsfach'"
         [attributeValue]="profile?.favouriteSubject"
         [attributeType]="'Text'"
       ></app-attribute>
       <app-attribute
+        *ngIf="profile?.favouriteColor"
+        [attributeIcon]="''"
+        [attributeName]="'Lieblingsfarbe'"
+        [attributeValue]="profile?.favouriteColor"
+        [attributeType]="'Text'"
+      ></app-attribute>
+      <app-attribute
         *ngIf="profile?.phone"
+        [attributeIcon]="''"
         [attributeName]="'Handy'"
         [attributeValue]="profile?.phone"
         [attributeType]="'Text'"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.favouriteFood"
+        [attributeIcon]="''"
         [attributeName]="'Lieblingsessen'"
         [attributeValue]="profile?.favouriteFood"
         [attributeType]="'Text'"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.favouriteMedia"
+        [attributeIcon]="''"
         [attributeName]="'Lieblingsserie/-film'"
         [attributeValue]="profile?.favouriteMedia"
         [attributeType]="'Text'"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.specialClassFunction"
+        [attributeIcon]="''"
         [attributeName]="'Spezialfunktion in der Klasse'"
         [attributeValue]="profile?.specialClassFunction"
         [attributeType]="'Text'"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.socialmedia"
+        [attributeIcon]="''"
         [attributeName]="'Social-Media'"
         [attributeValue]="profile?.socialmedia"
         [attributeType]="'Text'"
