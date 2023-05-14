@@ -1,5 +1,5 @@
 <ion-content>
-  <app-moving-background></app-moving-background>
+  <app-moving-background [color]="colorVariable"></app-moving-background>
   <div
     class="flex flex-col p-2 w-full min-h-full md:w-medium-size-page mx-auto"
   >
@@ -7,67 +7,112 @@
     <app-profileheader [profile]="profile"></app-profileheader>
     <div class="mt-4 w-full">
       <app-attribute
+        *ngIf="profile?.age"
+        [attributeIcon]="'age.png'"
+        [attributeName]="'Age'"
+        [attributeValue]="profile?.age+' Jahre'"
+        [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
+      ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.email"
+        [attributeIcon]="'email.png'"
+        [attributeName]="'Email'"
+        [attributeValue]="profile?.email"
+        [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
+      ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.visionScore"
+        [attributeIcon]="'blindtest.png'"
+        [attributeName]="'Blindness Test Score'"
+        [attributeValue]="profile?.visionScore"
+        [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
+      ></app-attribute>
+      <app-attribute
         *ngIf="profile?.eyeColor"
         [attributeIcon]="'eye.png'"
-        [attributeName]="'Augenfarbe'"
+        [attributeName]="'Eye Color'"
         [attributeValue]="profile?.eyeColor"
         [attributeType]="'Color'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.piercingTattoos"
-        [attributeIcon]="''"
+        [attributeIcon]="'piercing.png'"
         [attributeName]="'Piercings/Tattoos'"
         [attributeValue]="profile?.piercingTattoos"
         [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.favouriteSong"
-        [attributeIcon]="''"
-        [attributeName]="'Lieblingslied'"
+        [attributeIcon]="'music.png'"
+        [attributeName]="'Favourite Song'"
         [attributeValue]="profile?.favouriteSong"
         [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.chickenCrossReason"
-        [attributeIcon]="''"
-        [attributeName]="'WHY did the chicken cross the road?'"
+        [attributeIcon]="'chicken.png'"
+        [attributeName]="'Why did the chicken cross the road?'"
         [attributeValue]="profile?.chickenCrossReason"
         [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.quote"
-        [attributeIcon]="''"
-        [attributeName]="'Zitat'"
+        [attributeIcon]="'quote.png'"
+        [attributeName]="'Quote'"
         [attributeValue]="profile?.quote"
         [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.hobbies"
-        [attributeIcon]="''"
+        [attributeIcon]="'hobbies.png'"
         [attributeName]="'Hobbys'"
         [attributeValue]="profile?.hobbies"
         [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.pets"
-        [attributeIcon]="''"
-        [attributeName]="'Haustiere'"
+        [attributeIcon]="'pet.png'"
+        [attributeName]="'Pets'"
         [attributeValue]="profile?.pets"
         [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.allergies"
-        [attributeIcon]="''"
-        [attributeName]="'Allergien'"
+        [attributeIcon]="'allergy.png'"
+        [attributeName]="'Allergies'"
         [attributeValue]="profile?.allergies"
         [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.schoolBeforeHTL"
-        [attributeIcon]="''"
-        [attributeName]="'Schule vor der HTL'"
+        [attributeIcon]="'school.png'"
+        [attributeName]="'School Before HTL'"
         [attributeValue]="profile?.schoolBeforeHTL"
         [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.burgerPizzaAvocado"
@@ -75,55 +120,71 @@
         [attributeName]="'🍔🍕🥑'"
         [attributeValue]="profile?.burgerPizzaAvocado"
         [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.favouriteSubject"
-        [attributeIcon]="''"
-        [attributeName]="'Lieblingsfach'"
+        [attributeIcon]="'subject.png'"
+        [attributeName]="'Favourite Subject'"
         [attributeValue]="profile?.favouriteSubject"
         [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.favouriteColor"
-        [attributeIcon]="''"
-        [attributeName]="'Lieblingsfarbe'"
+        [attributeIcon]="'color.png'"
+        [attributeName]="'Favourite Color'"
         [attributeValue]="profile?.favouriteColor"
         [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.phone"
-        [attributeIcon]="''"
-        [attributeName]="'Handy'"
+        [attributeIcon]="'phone.png'"
+        [attributeName]="'Smartphone'"
         [attributeValue]="profile?.phone"
         [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.favouriteFood"
-        [attributeIcon]="''"
-        [attributeName]="'Lieblingsessen'"
+        [attributeIcon]="'food.png'"
+        [attributeName]="'Favourite Food'"
         [attributeValue]="profile?.favouriteFood"
         [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.favouriteMedia"
-        [attributeIcon]="''"
-        [attributeName]="'Lieblingsserie/-film'"
+        [attributeIcon]="'media.png'"
+        [attributeName]="'Favourite Movie/Series'"
         [attributeValue]="profile?.favouriteMedia"
         [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.specialClassFunction"
-        [attributeIcon]="''"
-        [attributeName]="'Spezialfunktion in der Klasse'"
+        [attributeIcon]="'special_class_function.png'"
+        [attributeName]="'Special Class Function'"
         [attributeValue]="profile?.specialClassFunction"
         [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.socialmedia"
-        [attributeIcon]="''"
+        [attributeIcon]="'socialmedia.png'"
         [attributeName]="'Social-Media'"
         [attributeValue]="profile?.socialmedia"
         [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
       ></app-attribute>
     </div>
     <div style="min-height: 50px; width: 100%; clear: both"></div>
@@ -136,7 +197,7 @@
         [routerLink]="['./comment']"
         [state]="{profile: profile}"
       >
-        <ion-icon name="add"></ion-icon>
+        <ion-icon name="chatbox-outline"></ion-icon>
       </ion-fab-button>
     </ion-fab>
     <div style="min-height: 100px; width: 100%; clear: both"></div>

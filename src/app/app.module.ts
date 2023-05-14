@@ -9,9 +9,10 @@ import { AppComponent } from './app.component';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { CommonModule } from '@angular/common';
+import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
 
 const config: SocketIoConfig = {
-  url: 'http://188.22.60.224:80',
+  url: 'http://178.190.95.202:80',
   options: {},
 };
 
@@ -24,7 +25,10 @@ const config: SocketIoConfig = {
     AppRoutingModule,
     SocketIoModule.forRoot(config),
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    AndroidPermissions,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

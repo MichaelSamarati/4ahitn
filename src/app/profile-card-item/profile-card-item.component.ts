@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Student } from '../model/student';
 import { Router } from '@angular/router';
 
+import { genderToColor, genderToColorTransparent } from '../logic/color';
+
 @Component({
   selector: 'app-profile-card-item',
   templateUrl: './profile-card-item.component.html',
@@ -9,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ProfileCardItemComponent implements OnInit {
   @Input() profile: Student | undefined;
+  colorVariable: string;
 
   constructor(private router: Router) {}
 
@@ -30,6 +33,8 @@ export class ProfileCardItemComponent implements OnInit {
     //     );
     //   }
     // });
+
+    this.colorVariable = genderToColorTransparent(this.profile?.gender);
   }
 
   setOpacityStuff() {

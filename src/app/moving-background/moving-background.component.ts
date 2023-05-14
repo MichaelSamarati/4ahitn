@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-moving-background',
@@ -9,6 +9,7 @@ export class MovingBackgroundComponent implements OnInit {
   circles: Circle[];
   circleCount: number;
   updateDeltaTime: number;
+  @Input() color: string ;
   constructor() {
     this.circles = [];
     this.circleCount = 120;
@@ -21,13 +22,19 @@ export class MovingBackgroundComponent implements OnInit {
     let w = document.body.clientWidth;
     let h = document.body.clientHeight;
     for (let i = 0; i < this.circleCount; i++) {
-      this.circles.push(new Circle(w || 0, h || 0));
+      this.circles.push(
+        new Circle(w || 0, h || 0, i % 2 ? 'rgb(241, 241, 241)' : this.color)
+      );
     }
     setInterval(() => {
       for (let i = 0; i < this.circles.length; i++) {
         this.circles[i].update();
       }
     }, this.updateDeltaTime);
+  }
+
+  getColor(): string {
+    return this.color;
   }
 }
 class Circle {
@@ -38,6 +45,7 @@ class Circle {
   x2: number;
   y2: number;
   progress: number;
+  color: string;
   static OPACITY_MIN: number = 5;
   static OPACITY_MAX: number = 30;
   static DISTANCE_MIN: number = 150;
@@ -45,7 +53,7 @@ class Circle {
   static SIZE_MIN: number = 5;
   static SIZE_MAX: number = 30;
 
-  constructor(w: number, h: number) {
+  constructor(w: number, h: number, color: string) {
     this.x = this.randomIntFromInterval(-w / 2, w / 2);
     this.y = this.randomIntFromInterval(-h / 2, h / 2);
     this.size = this.randomIntFromInterval(Circle.SIZE_MIN, Circle.SIZE_MAX);
@@ -64,18 +72,12 @@ class Circle {
       this.x2 = -this.x2;
     }
     this.progress = this.randomIntFromInterval(0, 100);
+    this.color = color;
   }
 
   update() {
     this.progress = (this.progress + 0.5) % 100;
-    // if (this.progress <= 0.0) this.reset();
   }
-
-  // reset() {
-  //   this.x = this.randomIntFromInterval(Star.LEFT_WIDTH, Star.RIGHT_WIDTH);
-  //   this.y = this.randomIntFromInterval(Star.TOP_HEIGHT, Star.BOTTOM_HEIGHT);
-  //   this.z = Star.Z;
-  // }
 
   getOffsetX(): number {
     let xDiff = this.x - this.x2;
@@ -95,6 +97,10 @@ class Circle {
 
   getOpacity(): number {
     return this.opacity;
+  }
+
+  getColor(): string {
+    return this.color;
   }
 
   randomIntFromInterval(min: number, max: number) {

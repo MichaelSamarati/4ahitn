@@ -3,8 +3,19 @@
 
 /** Ionic CSS Variables **/
 :root {
+  --color-gender-default: #222222;
+  --color-male: #2986cc;
+  --color-male-transparent: #2986ccbb;
+  --color-male-dark: #194e77;
+  --color-male-dark-transparent: #194e77bb;
+  --color-female: #c90076;
+  --color-female-transparent: #c90076bb;
+  --color-female-dark: #81024c;
+  --color-female-dark-transparent: #81024cbb;
+
   /*My SCSS variables*/
-  --ion-font-family: "Rubik", sans-serif;
+  // --ion-font-family: "Rubik", sans-serif;
+  --ion-font-family: "Ubuntu", sans-serif;
 
   /** primary **/
   --ion-color-primary: #3880ff;

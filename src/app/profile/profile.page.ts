@@ -6,7 +6,8 @@ import { Student } from '../model/student';
 import { CommunicationService } from '../services/communication.service';
 import { Subscription } from 'rxjs';
 import { Comment } from '../model/comment';
-
+import { genderToColor, genderToColorDark, genderToColorDarkTransparent, genderToColorTransparent } from '../logic/color';
+import { calculateAge } from '../logic/date';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -16,6 +17,8 @@ export class ProfilePage implements OnInit, OnDestroy {
   profile: Student | undefined;
   comments: Comment[] | undefined;
   subscriptions = new Subscription();
+  colorVariable: string;
+  colorVariableDark: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,8 +31,18 @@ export class ProfilePage implements OnInit, OnDestroy {
     this.subscriptions.add(
       this.communicationService
         .waitForStudents()
-        .subscribe((students: Student[]) => {
-          this.profile = students.find(x => x.studentid==profileIdFromRoute);
+        .subscribe(async (students: Student[]) => {
+          this.profile = students.find(
+            (x) => x.studentid == profileIdFromRoute
+          );
+          if (!this.profile) {
+            return;
+          }
+          this.colorVariable = genderToColorTransparent(this.profile?.gender);
+          this.colorVariableDark = genderToColorDarkTransparent(this.profile?.gender);
+          this.profile.age = calculateAge(
+            new Date(String(this.profile?.birthday))
+          );
         })
     );
     this.communicationService.requestComments(profileIdFromRoute);

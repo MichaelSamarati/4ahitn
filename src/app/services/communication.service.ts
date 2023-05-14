@@ -8,7 +8,7 @@ import { Student } from '../model/student';
   providedIn: 'root',
 })
 export class CommunicationService {
-  public students: BehaviorSubject<any> = new BehaviorSubject('');
+  public students: BehaviorSubject<any> = new BehaviorSubject([]);
   public student: BehaviorSubject<any> = new BehaviorSubject('');
   public comments: BehaviorSubject<any> = new BehaviorSubject('');
   public comment_insert: BehaviorSubject<any> = new BehaviorSubject('');
@@ -22,7 +22,8 @@ export class CommunicationService {
 
   waitForStudents() {
     this.socket.on('students_success', (msg: any) => {
-      this.students.next([...this.students.value, msg]);
+      let student: Student = msg;
+      this.students.next([...this.students.value, student]);
     });
     return this.students.asObservable();
   }

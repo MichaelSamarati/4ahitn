@@ -1,10 +1,8 @@
 <div id="moving-background" class="w-full h-full fixed" style="z-index: -1">
-  <div
-    class="relative w-full h-full moving-background-color "
-  ></div>
+  <div class="relative w-full h-full moving-background-color"></div>
   <div
     *ngFor="let circle of circles; let i = index"
-    class="circle-color absolute top-0 left-0 rounded-full "
+    class="absolute top-0 left-0 rounded-full"
     [style]="
       'width: ' +
       circle.getDiameter() +
@@ -16,8 +14,9 @@
       'px + 50%); left: calc(' +
       circle.getOffsetX() +
       'px + 50%); opacity: ' +
-      circle.getOpacity()/100 
+      circle.getOpacity() / 100 +
+      '; background-color: ' +
+      getColor()
     "
   ></div>
-
 </div>

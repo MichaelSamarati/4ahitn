@@ -5,6 +5,7 @@ import { Student } from '../model/student';
 import { CommunicationService } from '../services/communication.service';
 import { Subscription } from 'rxjs';
 import { Comment } from '../model/comment';
+import { Preferences } from '@capacitor/preferences';
 
 @Component({
   selector: 'app-commentform',
@@ -15,7 +16,7 @@ export class CommentformPage implements OnInit {
   profile: Student | undefined;
   comments: Comment[] | undefined;
   subscriptions = new Subscription();
-  name: string | undefined;
+  name: string | null;
   message: string | undefined;
 
   constructor(
@@ -24,26 +25,35 @@ export class CommentformPage implements OnInit {
     private communicationService: CommunicationService
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.subscriptions = new Subscription();
     const routeParams = this.route.snapshot.paramMap;
     const profileIdFromRoute = routeParams.get('id');
     this.subscriptions.add(
       this.communicationService
         .waitForStudents()
         .subscribe((students: Student[]) => {
-          this.profile = students.find(x => x.studentid==profileIdFromRoute);
+          this.profile = students.find(
+            (x) => x.studentid == profileIdFromRoute
+          );
         })
     );
+    this.name = await this.getPseudonym();
+    if (this.name == '') {
+      this.setPseudonym('anonymous' + Math.floor(Math.random() * 100));
+      this.name = await this.getPseudonym();
+    }
   }
 
   ngOnDestroy() {
+    this.setPseudonym(this.name || '');
     this.subscriptions.unsubscribe();
   }
 
   submitComment() {
     const comment: Comment = new Comment(
       undefined,
-      this.name,
+      this.name || '',
       this.message,
       new Date(),
       this.profile?.studentid
@@ -56,5 +66,17 @@ export class CommentformPage implements OnInit {
           this.location.back();
         })
     );
+  }
+
+  async setPseudonym(pseudonym: string) {
+    await Preferences.set({
+      key: 'commentpseudonym',
+      value: pseudonym,
+    });
+  }
+
+  async getPseudonym() {
+    const pseudonym = await Preferences.get({ key: 'commentpseudonym' });
+    return pseudonym.value;
   }
 }

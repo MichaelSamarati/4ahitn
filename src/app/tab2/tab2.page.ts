@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 export class Tab2Page implements OnInit, OnDestroy {
   availableStudents: Student[];
   students: Student[];
-  subscriptions = new Subscription();
+  subscription = new Subscription();
   range: number;
 
   constructor(private communicationService: CommunicationService) {
@@ -21,13 +21,14 @@ export class Tab2Page implements OnInit, OnDestroy {
   ngOnInit() {
     this.clear();
     this.communicationService.requestStudents();
-    this.subscriptions.add(
-      this.communicationService
+    if (this.subscription.closed) {
+      this.subscription = this.communicationService
         .waitForStudents()
         .subscribe((students: Student[]) => {
           this.availableStudents = students;
-        })
-    );
+        });
+    }
+
     setTimeout(() => {
       let interval = setInterval(() => {
         if (this.range > 50) {
@@ -38,17 +39,18 @@ export class Tab2Page implements OnInit, OnDestroy {
           this.students.push(this.availableStudents[this.range]);
           this.range++;
         }
-      }, 150);
-    }, 50);
+      }, 190);
+    }, 100);
   }
 
-  clear(){
+  clear() {
+    this.subscription.unsubscribe();
     this.availableStudents = [];
     this.students = [];
     this.range = 0;
   }
 
   ngOnDestroy() {
-    this.subscriptions.unsubscribe();
+    this.clear();
   }
 }

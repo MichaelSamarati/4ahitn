@@ -10,7 +10,7 @@
     style="height: 78px; width: auto"
   >
     <ring
-      [padding]="7"
+      [padding]="8"
       [image]="profile?.image"
       [favouriteSubject]="profile?.favouriteSubject"
       [favouriteColor]="profile?.favouriteColor"
@@ -19,9 +19,13 @@
     ></ring>
   </div>
   <div
-    class="rounded-2xl flex items-center list-item-shadow"
+    class="rounded-2xl flex items-center"
     [style]="
-      'margin-left: calc(39px + 7px); padding-left: 39px; height: 55px; width: 100%; background: #343434'
+      'margin-left: calc(39px + 7px); padding-left: 39px; height: 55px; width: 100%; background: ' +
+      colorVariable +
+      '; ' +
+      'box-shadow: 0px 0px 20px 0px ' +
+      colorVariable
     "
   >
     <div class="text-xl">{{ profile?.forename }} {{ profile?.lastname }}</div>
