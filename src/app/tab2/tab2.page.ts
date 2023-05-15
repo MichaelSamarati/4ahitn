@@ -39,8 +39,8 @@ export class Tab2Page implements OnInit, OnDestroy {
           this.students.push(this.availableStudents[this.range]);
           this.range++;
         }
-      }, 190);
-    }, 100);
+      }, 175);
+    }, 130);
   }
 
   clear() {
