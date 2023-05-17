@@ -35,7 +35,7 @@ export class ProfilePage implements OnInit, OnDestroy {
     const profileIdFromRoute = routeParams.get('id');
     this.subscriptions.add(
       this.communicationService
-        .getActiveStudents()
+        .waitForStudents()
         .subscribe(async (students: Student[]) => {
           this.profile = students.find(
             (x) => x.studentid == profileIdFromRoute

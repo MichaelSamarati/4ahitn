@@ -37,11 +37,12 @@ function burgerPizzaAvocadoToColor(burgerPizzaAvocado: string) {
 }
 
 function attributeToColor(attribute: string, map: Map<string, string>) {
-  let color = map.get(attribute);
-  if (!color) {
-    color = defaultColor;
+  try {
+    let color = map.get(attribute);
+    return color;
+  } catch (e) {
+    return defaultColor;
   }
-  return color;
 }
 
 export { favouriteSubjectToColor, phoneToColor, burgerPizzaAvocadoToColor };

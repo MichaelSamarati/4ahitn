@@ -1,22 +1,19 @@
 <ion-content>
   <div
-    id="moonBackground"
+    id="background"
     class="w-full h-full fixed"
-    style="
-      z-index: -1;
-      /* background-image: url('../../assets/moon_background.gif');
-      background-repeat: repeat; */
-      /* transform: translateY(-20px); */
-      /* min-height: 200vh; */
-      
-    "
+    style="z-index: -1; opacity: 0.8"
   >
-    <img src="../../assets/purple_magenta_background.jpg" class="w-full h-full "/>
+    <img
+      src="../../assets/purple_magenta_background.jpg"
+      class="w-full h-full movement-animation"
+    />
   </div>
   <div
     class="flex flex-col p-2 w-full min-h-full md:w-medium-size-page mx-auto justify-center items-center"
+    style="text-shadow: 1px 1px #ffffff40; transform: scale(1.25)"
   >
-    <div class="mt-8"></div>
+    <div class="mt-4"></div>
     <div class="mt-2 text-xl font-bold">Entwickler-Kontakt</div>
     <div>mail@mail.com</div>
     <div>+43 660 5509988</div>
@@ -26,5 +23,6 @@
     <div>1220 Wien</div>
     <div>office@htl-donaustadt.at</div>
     <div>+43 1 20105 106</div>
+    <div class="mt-32"></div>
   </div>
 </ion-content>

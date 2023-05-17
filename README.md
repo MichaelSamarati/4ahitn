@@ -11,6 +11,9 @@ ionic capacitor build ios
 
 
 
+
+
+ionic capacitor build android
 npx cap sync
 
 

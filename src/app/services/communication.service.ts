@@ -10,7 +10,6 @@ import { Student } from '../model/student';
 export class CommunicationService {
   public static activeStudents: BehaviorSubject<any> = new BehaviorSubject([]);
   public static students: BehaviorSubject<any> = new BehaviorSubject([]);
-  // public student: BehaviorSubject<any> = new BehaviorSubject('');
   public comments: BehaviorSubject<any> = new BehaviorSubject('');
   public comment_insert: BehaviorSubject<any> = new BehaviorSubject('');
   public static range: number = 0;
@@ -21,7 +20,7 @@ export class CommunicationService {
     this.socket.emit('students', {});
   }
 
-resetStudents()    {
+  resetStudents() {
     CommunicationService.students.next([]);
     CommunicationService.activeStudents.next([]);
     CommunicationService.range = 0;
@@ -38,7 +37,7 @@ resetStudents()    {
     return CommunicationService.students.asObservable();
   }
 
-  initialeActiveStudents() {
+  initiateActiveStudents() {
     setTimeout(() => {
       let interval = setInterval(() => {
         if (CommunicationService.range > 50) {

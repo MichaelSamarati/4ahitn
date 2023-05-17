@@ -8,7 +8,7 @@
     <div class="mt-4 w-full">
       <app-attribute
         *ngIf="profile?.age"
-        [attributeIcon]="'age.png'"
+        [attributeIcons]="['age.png']"
         [attributeName]="'Age'"
         [attributeValue]="profile?.age+' Jahre'"
         [attributeType]="'Text'"
@@ -17,7 +17,7 @@
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.email"
-        [attributeIcon]="'email.png'"
+        [attributeIcons]="['email.png']"
         [attributeName]="'Email'"
         [attributeValue]="profile?.email"
         [attributeType]="'Text'"
@@ -26,7 +26,7 @@
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.visionScore"
-        [attributeIcon]="'blindtest.png'"
+        [attributeIcons]="['blindtest.png']"
         [attributeName]="'Blindness Test Score'"
         [attributeValue]="profile?.visionScore"
         [attributeType]="'Text'"
@@ -35,17 +35,17 @@
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.eyeColor"
-        [attributeIcon]="'eye.png'"
+        [attributeIcons]="['eye.png']"
         [attributeName]="'Eye Color'"
         [attributeValue]="profile?.eyeColor"
-        [attributeType]="'Color'"
+        [attributeType]="'Text'"
         [colorPrimary]="colorVariable"
         [colorSecondary]="colorVariableDark"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.piercingTattoos"
-        [attributeIcon]="'piercing.png'"
-        [attributeName]="'Piercings/Tattoos'"
+        [attributeIcons]="['piercing.png', 'tattoo.png']"
+        [attributeName]="''"
         [attributeValue]="profile?.piercingTattoos"
         [attributeType]="'Text'"
         [colorPrimary]="colorVariable"
@@ -53,7 +53,7 @@
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.favouriteSong"
-        [attributeIcon]="'music.png'"
+        [attributeIcons]="['music.png']"
         [attributeName]="'Favourite Song'"
         [attributeValue]="profile?.favouriteSong"
         [attributeType]="'Text'"
@@ -62,7 +62,7 @@
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.chickenCrossReason"
-        [attributeIcon]="'chicken.png'"
+        [attributeIcons]="['chicken.png']"
         [attributeName]="'Why did the chicken cross the road?'"
         [attributeValue]="profile?.chickenCrossReason"
         [attributeType]="'Text'"
@@ -71,7 +71,7 @@
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.quote"
-        [attributeIcon]="'quote.png'"
+        [attributeIcons]="['quote.png']"
         [attributeName]="'Quote'"
         [attributeValue]="profile?.quote"
         [attributeType]="'Text'"
@@ -80,7 +80,7 @@
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.hobbies"
-        [attributeIcon]="'hobbies.png'"
+        [attributeIcons]="['hobbies.png']"
         [attributeName]="'Hobbys'"
         [attributeValue]="profile?.hobbies"
         [attributeType]="'Text'"
@@ -89,7 +89,7 @@
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.pets"
-        [attributeIcon]="'pet.png'"
+        [attributeIcons]="['pet.png']"
         [attributeName]="'Pets'"
         [attributeValue]="profile?.pets"
         [attributeType]="'Text'"
@@ -98,7 +98,7 @@
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.allergies"
-        [attributeIcon]="'allergy.png'"
+        [attributeIcons]="['allergy.png']"
         [attributeName]="'Allergies'"
         [attributeValue]="profile?.allergies"
         [attributeType]="'Text'"
@@ -107,7 +107,7 @@
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.schoolBeforeHTL"
-        [attributeIcon]="'school.png'"
+        [attributeIcons]="['school.png']"
         [attributeName]="'School Before HTL'"
         [attributeValue]="profile?.schoolBeforeHTL"
         [attributeType]="'Text'"
@@ -116,8 +116,8 @@
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.burgerPizzaAvocado"
-        [attributeIcon]="''"
-        [attributeName]="'🍔🍕🥑'"
+        [attributeIcons]="['burger.png', 'pizza.png', 'avocado.png']"
+        [attributeName]="''"
         [attributeValue]="profile?.burgerPizzaAvocado"
         [attributeType]="'Text'"
         [colorPrimary]="colorVariable"
@@ -125,7 +125,7 @@
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.favouriteSubject"
-        [attributeIcon]="'subject.png'"
+        [attributeIcons]="['subject.png']"
         [attributeName]="'Favourite Subject'"
         [attributeValue]="profile?.favouriteSubject"
         [attributeType]="'Text'"
@@ -134,16 +134,16 @@
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.favouriteColor"
-        [attributeIcon]="'color.png'"
+        [attributeIcons]="['color.png']"
         [attributeName]="'Favourite Color'"
         [attributeValue]="profile?.favouriteColor"
-        [attributeType]="'Text'"
+        [attributeType]="'Color'"
         [colorPrimary]="colorVariable"
         [colorSecondary]="colorVariableDark"
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.phone"
-        [attributeIcon]="'phone.png'"
+        [attributeIcons]="['phone.png']"
         [attributeName]="'Smartphone'"
         [attributeValue]="profile?.phone"
         [attributeType]="'Text'"
@@ -152,7 +152,7 @@
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.favouriteFood"
-        [attributeIcon]="'food.png'"
+        [attributeIcons]="['food.png']"
         [attributeName]="'Favourite Food'"
         [attributeValue]="profile?.favouriteFood"
         [attributeType]="'Text'"
@@ -161,7 +161,7 @@
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.favouriteMedia"
-        [attributeIcon]="'media.png'"
+        [attributeIcons]="['media.png']"
         [attributeName]="'Favourite Movie/Series'"
         [attributeValue]="profile?.favouriteMedia"
         [attributeType]="'Text'"
@@ -170,7 +170,7 @@
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.specialClassFunction"
-        [attributeIcon]="'special_class_function.png'"
+        [attributeIcons]="['special_class_function.png']"
         [attributeName]="'Special Class Function'"
         [attributeValue]="profile?.specialClassFunction"
         [attributeType]="'Text'"
@@ -179,7 +179,7 @@
       ></app-attribute>
       <app-attribute
         *ngIf="profile?.socialmedia"
-        [attributeIcon]="'socialmedia.png'"
+        [attributeIcons]="['socialmedia.png']"
         [attributeName]="'Social-Media'"
         [attributeValue]="profile?.socialmedia"
         [attributeType]="'Text'"

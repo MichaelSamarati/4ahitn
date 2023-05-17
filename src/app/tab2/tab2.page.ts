@@ -15,7 +15,7 @@ export class Tab2Page implements OnInit {
   constructor(private communicationService: CommunicationService) {}
 
   ngOnInit() {
-    this.communicationService.initialeActiveStudents();
+    this.communicationService.initiateActiveStudents();
     this.subscription = this.communicationService
       .getActiveStudents()
       .subscribe((students: Student[]) => {

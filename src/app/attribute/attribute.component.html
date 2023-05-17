@@ -4,7 +4,7 @@
     [style]="'background-color: ' + colorSecondary"
   >
     <img
-      *ngIf="attributeIcon"
+      *ngFor="let attributeIcon of attributeIcons"
       class="square"
       [src]="'../../assets/' + attributeIcon"
       style="width: 34px"
@@ -12,10 +12,10 @@
     <p
       class="my-auto break-words font-bold"
       [style]="
-        'font-size: calc' +
+        'font-size: ' +
         nameTextSize +
         'px; padding-right: ' +
-        (attributeIcon ? 34+4 : 4) +
+        ((attributeIcons?.length || 0) * 34 + 4) +
         'px; transform: translateY(1px)'
       "
     >
@@ -34,6 +34,10 @@
     class="mt-1 py-1 px-3 bg-gray-500 flex justify-start rounded-lg break-words"
     [style]="'background-color: ' + colorPrimary + '; font-size: 17px'"
   >
+    <div
+      class="mr-1 w-4 h-4 rounded-full my-auto"
+      [style]="' background-color: ' + attributeValue + ';'"
+    ></div>
     {{ attributeValue }}
   </div>
 </div>

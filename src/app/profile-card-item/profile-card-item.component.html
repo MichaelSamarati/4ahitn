@@ -1,16 +1,16 @@
 <ion-item
   [routerLink]="['./profile/' + profile?.studentid]"
-  class="w-full my-3 rounded-full relative flex justify-center items-center profileCardItemComponent profileCardItemComponentAppearAnimation opacity-0"
+  class="w-full rounded-full relative flex justify-center items-center profileCardItemComponent profileCardItemComponentAppearAnimation opacity-0"
   [style]="
-    '--padding-start: 0; --inner-padding-end: 0px; height: 78px; overflow: visible; border: none; --ion-item-background: transparent'
+    '--padding-start: 0; --inner-padding-end: 0px; height: 78px; overflow: visible; border: none; --ion-item-background: transparent; margin-top: 24px; margin-bottom: 24px;'
   "
 >
   <div
     class="square rounded-full flex justify-center items-center list-item-shadow absolute z-10"
-    style="height: 78px; width: auto"
+    style="height: 86px; width: auto"
   >
     <ring
-      [padding]="8"
+      [padding]="9"
       [image]="profile?.image"
       [favouriteSubject]="profile?.favouriteSubject"
       [favouriteColor]="profile?.favouriteColor"
@@ -21,7 +21,7 @@
   <div
     class="rounded-2xl flex items-center"
     [style]="
-      'margin-left: calc(39px + 7px); padding-left: 39px; height: 55px; width: 100%; font-size: 15px; background: ' +
+      'margin-left: calc(43px + 10px); padding-left: 39px; height: 55px; width: 100%; font-size: 15px; background: ' +
       colorVariable +
       '; ' +
       'box-shadow: 0px 0px 20px 0px ' +

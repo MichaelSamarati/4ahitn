@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./attribute.component.scss'],
 })
 export class AttributeComponent implements OnInit {
-  @Input() attributeIcon: string | undefined;
+  @Input() attributeIcons: string[] | undefined;
   @Input() attributeName: string | undefined;
   @Input() attributeValue: string | undefined;
   @Input() attributeType: string | undefined;
@@ -19,6 +19,6 @@ export class AttributeComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.nameTextSize = (this.attributeName?.length || 0)>=26?14:17;
+    this.nameTextSize = (this.attributeName?.length || 0)>=26?15:17;
   }
 }

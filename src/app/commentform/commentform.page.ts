@@ -18,6 +18,7 @@ export class CommentformPage implements OnInit {
   subscriptions = new Subscription();
   name: string | null;
   message: string | undefined;
+  imageName: string | undefined;
 
   constructor(
     private location: Location,
@@ -36,8 +37,13 @@ export class CommentformPage implements OnInit {
           this.profile = students.find(
             (x) => x.studentid == profileIdFromRoute
           );
+          this.imageName =
+            this.profile?.gender == 'f'
+              ? 'female_background.png'
+              : 'male_background.png';
         })
     );
+
     this.name = await this.getPseudonym();
     if (this.name == '') {
       this.setPseudonym('anonymous' + Math.floor(Math.random() * 100));
