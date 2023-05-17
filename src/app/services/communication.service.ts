@@ -8,10 +8,12 @@ import { Student } from '../model/student';
   providedIn: 'root',
 })
 export class CommunicationService {
+  public availableStudents: BehaviorSubject<any> = new BehaviorSubject([]);
   public students: BehaviorSubject<any> = new BehaviorSubject([]);
   public student: BehaviorSubject<any> = new BehaviorSubject('');
   public comments: BehaviorSubject<any> = new BehaviorSubject('');
   public comment_insert: BehaviorSubject<any> = new BehaviorSubject('');
+  public range: number = 0;
 
   constructor(private socket: Socket) {}
 

@@ -12,7 +12,6 @@ export class Tab2Page implements OnInit, OnDestroy {
   availableStudents: Student[];
   students: Student[];
   subscription = new Subscription();
-  range: number;
 
   constructor(private communicationService: CommunicationService) {
     this.clear();
@@ -28,27 +27,13 @@ export class Tab2Page implements OnInit, OnDestroy {
           this.availableStudents = students;
         });
     }
-
-    setTimeout(() => {
-      let interval = setInterval(() => {
-        if (this.range > 50) {
-          clearInterval(interval);
-          return;
-        }
-        if (this.availableStudents[this.range]) {
-          this.students.push(this.availableStudents[this.range]);
-          this.range++;
-        }
-      }, 175);
-    }, 130);
   }
 
   clear() {
     this.subscription.unsubscribe();
     this.availableStudents = [];
     this.students = [];
-    this.range = 0;
-  }
+e  }
 
   ngOnDestroy() {
     this.clear();
