@@ -8,34 +8,18 @@ import { Subscription } from 'rxjs';
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
 })
-export class Tab2Page implements OnInit, OnDestroy {
-  availableStudents: Student[];
+export class Tab2Page implements OnInit {
   students: Student[];
   subscription = new Subscription();
 
-  constructor(private communicationService: CommunicationService) {
-    this.clear();
-  }
+  constructor(private communicationService: CommunicationService) {}
 
   ngOnInit() {
-    this.clear();
-    this.communicationService.requestStudents();
-    if (this.subscription.closed) {
-      this.subscription = this.communicationService
-        .waitForStudents()
-        .subscribe((students: Student[]) => {
-          this.availableStudents = students;
-        });
-    }
-  }
-
-  clear() {
-    this.subscription.unsubscribe();
-    this.availableStudents = [];
-    this.students = [];
-e  }
-
-  ngOnDestroy() {
-    this.clear();
+    this.communicationService.initialeActiveStudents();
+    this.subscription = this.communicationService
+      .getActiveStudents()
+      .subscribe((students: Student[]) => {
+        this.students = students;
+      });
   }
 }

@@ -8,38 +8,58 @@ import { Student } from '../model/student';
   providedIn: 'root',
 })
 export class CommunicationService {
-  public availableStudents: BehaviorSubject<any> = new BehaviorSubject([]);
-  public students: BehaviorSubject<any> = new BehaviorSubject([]);
-  public student: BehaviorSubject<any> = new BehaviorSubject('');
+  public static activeStudents: BehaviorSubject<any> = new BehaviorSubject([]);
+  public static students: BehaviorSubject<any> = new BehaviorSubject([]);
+  // public student: BehaviorSubject<any> = new BehaviorSubject('');
   public comments: BehaviorSubject<any> = new BehaviorSubject('');
   public comment_insert: BehaviorSubject<any> = new BehaviorSubject('');
-  public range: number = 0;
+  public static range: number = 0;
 
   constructor(private socket: Socket) {}
 
   requestStudents() {
-    this.students.next([]);
     this.socket.emit('students', {});
+  }
+
+resetStudents()    {
+    CommunicationService.students.next([]);
+    CommunicationService.activeStudents.next([]);
+    CommunicationService.range = 0;
   }
 
   waitForStudents() {
     this.socket.on('students_success', (msg: any) => {
       let student: Student = msg;
-      this.students.next([...this.students.value, student]);
+      CommunicationService.students.next([
+        ...CommunicationService.students.value,
+        student,
+      ]);
     });
-    return this.students.asObservable();
+    return CommunicationService.students.asObservable();
   }
 
-  // requestStudent(id: any) {
-  //   this.socket.emit('student', { id });
-  // }
+  initialeActiveStudents() {
+    setTimeout(() => {
+      let interval = setInterval(() => {
+        if (CommunicationService.range > 50) {
+          clearInterval(interval);
+          return;
+        }
+        if (CommunicationService.students.value[CommunicationService.range]) {
+          CommunicationService.activeStudents.next([
+            ...CommunicationService.activeStudents.value,
+            CommunicationService.students.value[CommunicationService.range],
+          ]);
 
-  // waitForStudent() {
-  //   this.socket.on('student_success', (msg: any) => {
-  //     this.student.next(msg);
-  //   });
-  //   return this.student.asObservable();
-  // }
+          CommunicationService.range++;
+        }
+      }, 175);
+    }, 130);
+  }
+
+  getActiveStudents() {
+    return CommunicationService.activeStudents.asObservable();
+  }
 
   requestComments(id: any) {
     this.socket.emit('comments', { id });
