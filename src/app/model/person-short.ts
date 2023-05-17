@@ -1,5 +1,5 @@
-export class StudentShort {
-  studentid: string;
+export class PersonShort {
+  personid: string;
   forename: string;
   lastname: string;
   gender: string | undefined;
@@ -12,7 +12,7 @@ export class StudentShort {
   favouriteColor: string | undefined;
 
   constructor(
-    studentid: string,
+    personid: string,
     forename: string,
     lastname: string,
     gender: string | undefined,
@@ -24,7 +24,7 @@ export class StudentShort {
     favouriteSubject: string | undefined,
     favouriteColor: string | undefined,
   ) {
-    this.studentid = studentid;
+    this.personid = personid;
     this.forename = forename;
     this.lastname = lastname;
     this.gender = gender;

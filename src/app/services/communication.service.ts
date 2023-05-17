@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { BehaviorSubject } from 'rxjs';
 import { Comment } from '../model/comment';
-import { Student } from '../model/student';
+import { Person } from '../model/person';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CommunicationService {
-  public static activeStudents: BehaviorSubject<any> = new BehaviorSubject([]);
-  public static students: BehaviorSubject<any> = new BehaviorSubject([]);
+  public static activePersons: BehaviorSubject<any> = new BehaviorSubject([]);
+  public static persons: BehaviorSubject<any> = new BehaviorSubject([]);
   public comments: BehaviorSubject<any> = new BehaviorSubject('');
   public comment_insert: BehaviorSubject<any> = new BehaviorSubject('');
   public static range: number = 0;
@@ -17,37 +17,37 @@ export class CommunicationService {
   constructor(private socket: Socket) {}
 
   requestStudents() {
-    this.socket.emit('students', {});
+    this.socket.emit('persons', {});
   }
 
   resetStudents() {
-    CommunicationService.students.next([]);
-    CommunicationService.activeStudents.next([]);
+    CommunicationService.persons.next([]);
+    CommunicationService.activePersons.next([]);
     CommunicationService.range = 0;
   }
 
-  waitForStudents() {
-    this.socket.on('students_success', (msg: any) => {
-      let student: Student = msg;
-      CommunicationService.students.next([
-        ...CommunicationService.students.value,
-        student,
+  waitForPersons() {
+    this.socket.on('persons_success', (msg: any) => {
+      let person: Person = msg;
+      CommunicationService.persons.next([
+        ...CommunicationService.persons.value,
+        person,
       ]);
     });
-    return CommunicationService.students.asObservable();
+    return CommunicationService.persons.asObservable();
   }
 
-  initiateActiveStudents() {
+  initiateActivePersons() {
     setTimeout(() => {
       let interval = setInterval(() => {
         if (CommunicationService.range > 50) {
           clearInterval(interval);
           return;
         }
-        if (CommunicationService.students.value[CommunicationService.range]) {
-          CommunicationService.activeStudents.next([
-            ...CommunicationService.activeStudents.value,
-            CommunicationService.students.value[CommunicationService.range],
+        if (CommunicationService.persons.value[CommunicationService.range]) {
+          CommunicationService.activePersons.next([
+            ...CommunicationService.activePersons.value,
+            CommunicationService.persons.value[CommunicationService.range],
           ]);
 
           CommunicationService.range++;
@@ -56,8 +56,8 @@ export class CommunicationService {
     }, 130);
   }
 
-  getActiveStudents() {
-    return CommunicationService.activeStudents.asObservable();
+  getActivePersons() {
+    return CommunicationService.activePersons.asObservable();
   }
 
   requestComments(id: any) {

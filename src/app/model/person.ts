@@ -1,7 +1,5 @@
-import { calculateAge } from "../logic/date";
-
-export class Student {
-  studentid: string;
+export class Person {
+  personid: string;
   forename: string;
   lastname: string;
   gender: string | undefined;
@@ -29,7 +27,7 @@ export class Student {
   age: number | undefined;
 
   constructor(
-    studentid: string,
+    personid: string,
     forename: string,
     lastname: string,
     gender: string | undefined,
@@ -55,7 +53,7 @@ export class Student {
     specialClassFunction: string | undefined,
     socialmedia: string | undefined
   ) {
-    this.studentid = studentid;
+    this.personid = personid;
     this.forename = forename;
     this.lastname = lastname;
     this.gender = gender;

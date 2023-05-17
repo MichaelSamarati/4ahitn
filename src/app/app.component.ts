@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { Student } from './model/student';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { Person } from './model/person';
+import { Subscription } from 'rxjs';
 import { CommunicationService } from './services/communication.service';
-import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
 
 @Component({
   selector: 'app-root',
@@ -10,26 +9,20 @@ import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  students: Student[];
+  persons: Person[];
   subscriptions = new Subscription();
-  constructor(
-    private communicationService: CommunicationService // private androidPermissions: AndroidPermissions
-  ) {}
+  constructor(private communicationService: CommunicationService) {}
 
   ngOnInit() {
     this.communicationService.resetStudents();
     this.communicationService.requestStudents();
     this.subscriptions.add(
       this.communicationService
-        .waitForStudents()
-        .subscribe((students: Student[]) => {
-          this.students = students;
+        .waitForPersons()
+        .subscribe((persons: Person[]) => {
+          this.persons = persons;
         })
     );
-
-    // this.androidPermissions.requestPermissions([
-    //   this.androidPermissions.PERMISSION.INTERNET,
-    // ]);
   }
 
   ngOnDestroy() {

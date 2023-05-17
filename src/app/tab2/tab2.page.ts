@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Student } from '../model/student';
+import { Component, OnInit } from '@angular/core';
+import { Person } from '../model/person';
 import { CommunicationService } from '../services/communication.service';
 import { Subscription } from 'rxjs';
 
@@ -9,17 +9,17 @@ import { Subscription } from 'rxjs';
   styleUrls: ['tab2.page.scss'],
 })
 export class Tab2Page implements OnInit {
-  students: Student[];
+  persons: Person[];
   subscription = new Subscription();
 
   constructor(private communicationService: CommunicationService) {}
 
   ngOnInit() {
-    this.communicationService.initiateActiveStudents();
+    this.communicationService.initiateActivePersons();
     this.subscription = this.communicationService
-      .getActiveStudents()
-      .subscribe((students: Student[]) => {
-        this.students = students;
+      .getActivePersons()
+      .subscribe((persons: Person[]) => {
+        this.persons = persons;
       });
   }
 }

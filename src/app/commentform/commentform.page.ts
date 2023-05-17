@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Student } from '../model/student';
+import { Person } from '../model/person';
 import { CommunicationService } from '../services/communication.service';
 import { Subscription } from 'rxjs';
 import { Comment } from '../model/comment';
 import { Preferences } from '@capacitor/preferences';
+import { genderToColorDark, genderToColorDarkTransparent } from '../logic/color';
 
 @Component({
   selector: 'app-commentform',
@@ -13,12 +14,13 @@ import { Preferences } from '@capacitor/preferences';
   styleUrls: ['./commentform.page.scss'],
 })
 export class CommentformPage implements OnInit {
-  profile: Student | undefined;
+  profile: Person | undefined;
   comments: Comment[] | undefined;
   subscriptions = new Subscription();
   name: string | null;
   message: string | undefined;
   imageName: string | undefined;
+  colorVariable: string;
 
   constructor(
     private location: Location,
@@ -32,11 +34,9 @@ export class CommentformPage implements OnInit {
     const profileIdFromRoute = routeParams.get('id');
     this.subscriptions.add(
       this.communicationService
-        .waitForStudents()
-        .subscribe((students: Student[]) => {
-          this.profile = students.find(
-            (x) => x.studentid == profileIdFromRoute
-          );
+        .waitForPersons()
+        .subscribe((persons: Person[]) => {
+          this.profile = persons.find((x) => x.personid == profileIdFromRoute);
           this.imageName =
             this.profile?.gender == 'f'
               ? 'female_background.png'
@@ -49,6 +49,7 @@ export class CommentformPage implements OnInit {
       this.setPseudonym('anonymous' + Math.floor(Math.random() * 100));
       this.name = await this.getPseudonym();
     }
+    this.colorVariable = genderToColorDarkTransparent(this.profile?.gender);
   }
 
   ngOnDestroy() {
@@ -62,7 +63,7 @@ export class CommentformPage implements OnInit {
       this.name || '',
       this.message,
       new Date(),
-      this.profile?.studentid
+      this.profile?.personid
     );
     this.communicationService.sendComment(comment);
     this.subscriptions.add(

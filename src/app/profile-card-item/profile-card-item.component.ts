@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Student } from '../model/student';
+import { Person } from '../model/person';
 import { Router } from '@angular/router';
 
-import { genderToColor, genderToColorTransparent } from '../logic/color';
+import { genderToColorTransparent } from '../logic/color';
 
 @Component({
   selector: 'app-profile-card-item',
@@ -10,7 +10,7 @@ import { genderToColor, genderToColorTransparent } from '../logic/color';
   styleUrls: ['./profile-card-item.component.scss'],
 })
 export class ProfileCardItemComponent implements OnInit {
-  @Input() profile: Student | undefined;
+  @Input() profile: Person | undefined;
   colorVariable: string;
 
   constructor(private router: Router) {}

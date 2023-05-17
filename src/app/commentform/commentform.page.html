@@ -4,10 +4,7 @@
     class="w-full h-full fixed"
     style="z-index: -1; opacity: 0.9; transform: scale(1.3) translateY(-200px)"
   >
-    <img
-      [src]="'../../assets/'+imageName"
-      class="w-full h-full"
-    /><img
+    <img [src]="'../../assets/'+imageName" class="w-full h-full" /><img
       [src]="'../../assets/'+imageName"
       class="w-full h-full"
       style="transform: rotate(180deg) scaleX(-1)"
@@ -29,8 +26,8 @@
       required="true"
       maxlength="40"
       placeholder="Pseudonym"
-      class="w-full m-0 bg-gray-800 rounded-lg p-0"
-      style="--padding-start: 10px; --padding-end: 10px"
+      class="w-full m-0 rounded-lg p-0"
+      [style]="'--padding-start: 10px; --padding-end: 10px; background-color: '+colorVariable"
     ></ion-input>
     <ion-textarea
       [(ngModel)]="message"
@@ -43,23 +40,16 @@
       [autoGrow]="true"
       rows="5"
       class="w-full m-0 mt-2 bg-gray-800 rounded-lg min-h-[50%]"
-      style="--padding-start: 10px; --padding-end: 10px"
+      [style]="'--padding-start: 10px; --padding-end: 10px; background-color: '+colorVariable"
     ></ion-textarea>
     <ion-button
-      class="mx-auto mt-3 font-bold"
+      class="mx-auto mt-3 font-bold text-slate-200	"
       color="light"
       (click)="submitComment()"
     >
       Bestätigen
     </ion-button>
-    <!-- <ion-toast
-      trigger="true"
-      message="This toast will disappear after 5 seconds"
-      [duration]="5000"
-    ></ion-toast> -->
     <div style="min-height: 100px; width: 100%; clear: both"></div>
     <div class="mt-16"></div>
-
   </div>
-
 </ion-content>

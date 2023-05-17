@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Student } from '../model/student';
+import { Person } from '../model/person';
 
 @Component({
   selector: 'app-profileheader',
@@ -7,7 +7,7 @@ import { Student } from '../model/student';
   styleUrls: ['./profileheader.component.scss'],
 })
 export class ProfileheaderComponent implements OnInit {
-  @Input() profile: Student | undefined;
+  @Input() profile: Person | undefined;
 
   constructor() {}
 

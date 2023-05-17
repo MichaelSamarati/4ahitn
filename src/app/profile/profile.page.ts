@@ -2,13 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HostListener } from '@angular/core';
 
-import { Student } from '../model/student';
+import { Person } from '../model/person';
 import { CommunicationService } from '../services/communication.service';
 import { Subscription } from 'rxjs';
 import { Comment } from '../model/comment';
 import {
-  genderToColor,
-  genderToColorDark,
   genderToColorDarkTransparent,
   genderToColorTransparent,
 } from '../logic/color';
@@ -19,7 +17,7 @@ import { calculateAge } from '../logic/date';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit, OnDestroy {
-  profile: Student | undefined;
+  profile: Person | undefined;
   comments: Comment[] | undefined;
   subscriptions = new Subscription();
   colorVariable: string;
@@ -35,10 +33,10 @@ export class ProfilePage implements OnInit, OnDestroy {
     const profileIdFromRoute = routeParams.get('id');
     this.subscriptions.add(
       this.communicationService
-        .waitForStudents()
-        .subscribe(async (students: Student[]) => {
-          this.profile = students.find(
-            (x) => x.studentid == profileIdFromRoute
+        .waitForPersons()
+        .subscribe(async (persons: Person[]) => {
+          this.profile = persons.find(
+            (x) => x.personid == profileIdFromRoute
           );
           if (!this.profile) {
             return;
@@ -69,6 +67,6 @@ export class ProfilePage implements OnInit, OnDestroy {
 
   @HostListener('window:popstate', ['$event'])
   onPopState(event: any) {
-    this.communicationService.requestComments(this.profile?.studentid);
+    this.communicationService.requestComments(this.profile?.personid);
   }
 }
