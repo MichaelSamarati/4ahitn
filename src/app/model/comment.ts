@@ -3,19 +3,19 @@ export class Comment {
   name: string | undefined;
   message: string | undefined;
   dat: Date | undefined;
-  studentid: string | undefined;
+  personid: string | undefined;
 
   constructor(
     commentid: string | undefined,
     name: string | undefined,
     message: string | undefined,
     dat: Date | undefined,
-    studentid: string | undefined
+    personid: string | undefined
   ) {
     this.commentid = commentid;
     this.name = name;
     this.message = message;
     this.dat = dat;
-    this.studentid = studentid;
+    this.personid = personid;
   }
 }
