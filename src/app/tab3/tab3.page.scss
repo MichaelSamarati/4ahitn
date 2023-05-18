@@ -1,16 +1,16 @@
 @keyframes movement {
   0% {
-    transform: translate(-20px, -20px) scale(1.15);
-  }
-  50% {
     transform: translate(20px, 20px) scale(1.15);
   }
-  100% {
+  50% {
     transform: translate(-20px, -20px) scale(1.15);
+  }
+  100% {
+    transform: translate(20px, 20px) scale(1.15);
   }
 }
 
 .movement-animation {
   animation: movement 9s infinite ease 0.3s;
-  transform: scale(1.15);
+  transform: translate(20px, 20px) scale(1.15);
 }

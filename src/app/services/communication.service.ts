@@ -22,8 +22,8 @@ export class CommunicationService {
     new BehaviorSubject(false);
   public comments: BehaviorSubject<any> = new BehaviorSubject('');
   public comment_insert: BehaviorSubject<any> = new BehaviorSubject('');
-  public static readonly INITIAL_DELAY: number = 130;
-  public static readonly NEXT_DELAY: number = 165;
+  public static readonly INITIAL_DELAY: number = 140;
+  public static readonly NEXT_DELAY: number = 160;
 
   constructor(private socket: Socket) {}
 

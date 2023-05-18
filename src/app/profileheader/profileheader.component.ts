@@ -8,8 +8,17 @@ import { Person } from '../model/person';
 })
 export class ProfileheaderComponent implements OnInit {
   @Input() profile: Person | undefined;
+  nameTextSize: number;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.nameTextSize =
+      (this.profile?.forename.length || 0) +
+        1 +
+        (this.profile?.lastname.length || 0) >=
+      20
+        ? 20
+        : 24;
+  }
 }
