@@ -3,6 +3,7 @@ export class Person {
   forename: string;
   lastname: string;
   gender: string | undefined;
+  age: number | undefined;
   birthday: Date | undefined;
   email: string;
   image: string | undefined;
@@ -24,13 +25,21 @@ export class Person {
   favouriteMedia: string | undefined;
   specialClassFunction: string | undefined;
   socialmedia: string | undefined;
-  age: number | undefined;
+  subjects: string | undefined;
+  holidayDream: string | undefined;
+  schoolFromYouth: string | undefined;
+  formerJobs: string | undefined;
+  sideJobs: string | undefined;
+  drink: string | undefined;
+  operatingSystem: string | undefined;
+  vehicle: string | undefined;
 
   constructor(
     personid: string,
     forename: string,
     lastname: string,
     gender: string | undefined,
+    age: number | undefined,
     birthday: Date | undefined,
     email: string,
     image: string | undefined,
@@ -51,13 +60,22 @@ export class Person {
     favouriteFood: string | undefined,
     favouriteMedia: string | undefined,
     specialClassFunction: string | undefined,
-    socialmedia: string | undefined
+    socialmedia: string | undefined,
+    subjects: string | undefined,
+    holidayDream: string | undefined,
+    schoolFromYouth: string | undefined,
+    formerJobs: string | undefined,
+    sideJobs: string | undefined,
+    drink: string | undefined,
+    operatingSystem: string | undefined,
+    vehicle: string | undefined
   ) {
     this.personid = personid;
     this.forename = forename;
     this.lastname = lastname;
     this.gender = gender;
     this.birthday = birthday;
+    this.age = age;
     this.email = email;
     this.image = image;
     this.visionScore = visionScore;
@@ -78,6 +96,13 @@ export class Person {
     this.favouriteMedia = favouriteMedia;
     this.specialClassFunction = specialClassFunction;
     this.socialmedia = socialmedia;
+    this.subjects = subjects;
+    this.holidayDream = holidayDream;
+    this.schoolFromYouth = schoolFromYouth;
+    this.formerJobs = formerJobs;
+    this.sideJobs = sideJobs;
+    this.drink = drink;
+    this.operatingSystem = operatingSystem;
+    this.vehicle = vehicle;
   }
 }
-

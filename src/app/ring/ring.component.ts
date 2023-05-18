@@ -3,6 +3,7 @@ import {
   favouriteSubjectToColor,
   phoneToColor,
   burgerPizzaAvocadoToColor,
+  favouriteColorToColor,
 } from '../logic/student-color-ring';
 
 @Component({
@@ -17,6 +18,7 @@ export class RingComponent implements OnInit, OnChanges {
   @Input() phone: string | undefined;
   @Input() burgerPizzaAvocado: string | undefined;
   @Input() favouriteColor: string | undefined;
+  favouriteColorColor: string | undefined;
   favouriteSubjectColor: string | undefined;
   phoneColor: string | undefined;
   burgerPizzaAvocadoColor: string | undefined;
@@ -24,6 +26,18 @@ export class RingComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnInit() {
+    this.favouriteColorColor = favouriteColorToColor(
+      this.favouriteColor!
+    );
+    this.favouriteSubjectColor = favouriteSubjectToColor(
+      this.favouriteSubject!
+    );
+    this.phoneColor = phoneToColor(this.phone!);
+    this.burgerPizzaAvocadoColor = burgerPizzaAvocadoToColor(
+      this.burgerPizzaAvocado!
+    );
+
+
     const ring: any = document.getElementById('ring');
     const img: any = document.getElementById('profile-image');
     ring.addEventListener('click', function () {
@@ -56,13 +70,7 @@ export class RingComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.favouriteSubjectColor = favouriteSubjectToColor(
-      this.favouriteSubject!
-    );
-    this.phoneColor = phoneToColor(this.phone!);
-    this.burgerPizzaAvocadoColor = burgerPizzaAvocadoToColor(
-      this.burgerPizzaAvocado!
-    );
+
   }
 
   replayProfileRingRotationAnimation() {

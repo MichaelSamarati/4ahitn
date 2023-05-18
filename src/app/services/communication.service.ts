@@ -8,56 +8,142 @@ import { Person } from '../model/person';
   providedIn: 'root',
 })
 export class CommunicationService {
-  public static activePersons: BehaviorSubject<any> = new BehaviorSubject([]);
-  public static persons: BehaviorSubject<any> = new BehaviorSubject([]);
+  public static activeStudents: BehaviorSubject<any> = new BehaviorSubject([]);
+  public static students: BehaviorSubject<any> = new BehaviorSubject([]);
+  public static studentRange: number = 0;
+  public static studentMaxRange: number = 0;
+  public static areStudentsFinished: BehaviorSubject<boolean> =
+    new BehaviorSubject(false);
+  public static activeTeachers: BehaviorSubject<any> = new BehaviorSubject([]);
+  public static teachers: BehaviorSubject<any> = new BehaviorSubject([]);
+  public static teacherRange: number = 0;
+  public static teacherMaxRange: number = 0;
+  public static areTeachersFinished: BehaviorSubject<boolean> =
+    new BehaviorSubject(false);
   public comments: BehaviorSubject<any> = new BehaviorSubject('');
   public comment_insert: BehaviorSubject<any> = new BehaviorSubject('');
-  public static range: number = 0;
+  public static readonly INITIAL_DELAY: number = 130;
+  public static readonly NEXT_DELAY: number = 165;
 
   constructor(private socket: Socket) {}
 
+  reset() {
+    CommunicationService.students.next([]);
+    CommunicationService.activeStudents.next([]);
+    CommunicationService.studentRange = 0;
+    CommunicationService.studentMaxRange = 0;
+    CommunicationService.areStudentsFinished.next(false);
+    CommunicationService.teachers.next([]);
+    CommunicationService.activeTeachers.next([]);
+    CommunicationService.teacherRange = 0;
+    CommunicationService.teacherMaxRange = 0;
+    CommunicationService.areTeachersFinished.next(false);
+  }
+
   requestStudents() {
-    this.socket.emit('persons', {});
+    this.socket.emit('students', {});
   }
 
-  resetStudents() {
-    CommunicationService.persons.next([]);
-    CommunicationService.activePersons.next([]);
-    CommunicationService.range = 0;
-  }
-
-  waitForPersons() {
-    this.socket.on('persons_success', (msg: any) => {
+  waitForStudents() {
+    this.socket.on('students_length', (msg: any) => {
+      CommunicationService.studentMaxRange = msg.length;
+    });
+    this.socket.on('students_success', (msg: any) => {
       let person: Person = msg;
-      CommunicationService.persons.next([
-        ...CommunicationService.persons.value,
+      CommunicationService.students.next([
+        ...CommunicationService.students.value,
         person,
       ]);
     });
-    return CommunicationService.persons.asObservable();
+    return CommunicationService.students.asObservable();
   }
 
-  initiateActivePersons() {
+  initiateActiveStudents() {
     setTimeout(() => {
       let interval = setInterval(() => {
-        if (CommunicationService.range > 50) {
+        if (
+          CommunicationService.studentRange >=
+          CommunicationService.studentMaxRange
+        ) {
           clearInterval(interval);
+          CommunicationService.areStudentsFinished.next(true);
           return;
         }
-        if (CommunicationService.persons.value[CommunicationService.range]) {
-          CommunicationService.activePersons.next([
-            ...CommunicationService.activePersons.value,
-            CommunicationService.persons.value[CommunicationService.range],
+        if (
+          CommunicationService.students.value[CommunicationService.studentRange]
+        ) {
+          CommunicationService.activeStudents.next([
+            ...CommunicationService.activeStudents.value,
+            CommunicationService.students.value[
+              CommunicationService.studentRange
+            ],
           ]);
 
-          CommunicationService.range++;
+          CommunicationService.studentRange++;
         }
-      }, 175);
-    }, 130);
+      }, CommunicationService.NEXT_DELAY);
+    }, CommunicationService.INITIAL_DELAY);
   }
 
-  getActivePersons() {
-    return CommunicationService.activePersons.asObservable();
+  getActiveStudents() {
+    return CommunicationService.activeStudents.asObservable();
+  }
+
+  areStudentsFinished() {
+    return CommunicationService.areStudentsFinished.asObservable();
+  }
+
+  requestTeachers() {
+    this.socket.emit('teachers', {});
+  }
+
+  waitForTeachers() {
+    this.socket.on('teachers_length', (msg: any) => {
+      CommunicationService.teacherMaxRange = msg.length;
+    });
+    this.socket.on('teachers_success', (msg: any) => {
+      let person: Person = msg;
+      CommunicationService.teachers.next([
+        ...CommunicationService.teachers.value,
+        person,
+      ]);
+    });
+    return CommunicationService.teachers.asObservable();
+  }
+
+  initiateActiveTeachers() {
+    setTimeout(() => {
+      let interval = setInterval(() => {
+        if (
+          CommunicationService.teacherRange >=
+          CommunicationService.teacherMaxRange
+        ) {
+          clearInterval(interval);
+          CommunicationService.areTeachersFinished.next(true);
+          return;
+        }
+        if (
+          CommunicationService.teachers.value[CommunicationService.teacherRange]
+        ) {
+          CommunicationService.activeTeachers.next([
+            ...CommunicationService.activeTeachers.value,
+            CommunicationService.teachers.value[
+              CommunicationService.teacherRange
+            ],
+          ]);
+
+          CommunicationService.teacherRange++;
+        }
+      }, CommunicationService.NEXT_DELAY);
+    }, CommunicationService.INITIAL_DELAY);
+  }
+
+  getActiveTeachers() {
+    return CommunicationService.activeTeachers.asObservable();
+  }
+
+  areTeachersFinished() {
+    return CommunicationService.areTeachersFinished.asObservable();
   }
 
   requestComments(id: any) {

@@ -24,6 +24,13 @@ burgerPizzaAvocadoMap.set('🍕', '#fb8b23');
 burgerPizzaAvocadoMap.set('🍔', '#88472e');
 burgerPizzaAvocadoMap.set('🥑', '#87a922');
 
+function favouriteColorToColor(favouriteColor: string) {
+  if (!favouriteColor) {
+    return defaultColor;
+  }
+  return favouriteColor;
+}
+
 function favouriteSubjectToColor(favouriteSubject: string) {
   return attributeToColor(favouriteSubject, favouriteSubjectMap);
 }
@@ -39,10 +46,18 @@ function burgerPizzaAvocadoToColor(burgerPizzaAvocado: string) {
 function attributeToColor(attribute: string, map: Map<string, string>) {
   try {
     let color = map.get(attribute);
+    if (!color) {
+      return defaultColor;
+    }
     return color;
   } catch (e) {
     return defaultColor;
   }
 }
 
-export { favouriteSubjectToColor, phoneToColor, burgerPizzaAvocadoToColor };
+export {
+  favouriteColorToColor,
+  favouriteSubjectToColor,
+  phoneToColor,
+  burgerPizzaAvocadoToColor,
+};

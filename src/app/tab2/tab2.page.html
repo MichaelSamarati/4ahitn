@@ -12,13 +12,27 @@
       style="padding-left: 12px; padding-right: 12px"
     >
       <app-profile-card-item
-        *ngFor="let person of persons; let i = index"
-        [profile]="person"
+        *ngFor="let student of students; let i = index"
+        [profile]="student"
       ></app-profile-card-item>
     </ion-list>
-    <!-- <div class="mt-2 mb-2 text-3xl flex justify-center font-bold">
+
+    <div class="mt-16"></div>
+    <div
+      *ngIf="teachers.length"
+      class="mt-2 mb-2 text-3xl flex justify-center font-bold"
+    >
       4AHITN Lehrer
-    </div> -->
+    </div>
+    <ion-list
+      class="bg-transparent"
+      style="padding-left: 12px; padding-right: 12px"
+    >
+      <app-profile-card-item
+        *ngFor="let teacher of teachers; let i = index"
+        [profile]="teacher"
+      ></app-profile-card-item>
+    </ion-list>
     <div class="mt-16"></div>
   </div>
 </ion-content>

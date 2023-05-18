@@ -186,6 +186,78 @@
         [colorPrimary]="colorVariable"
         [colorSecondary]="colorVariableDark"
       ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.subjects"
+        [attributeIcons]="['subjects.png']"
+        [attributeName]="'Subjects'"
+        [attributeValue]="profile?.subjects"
+        [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
+      ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.holidayDream"
+        [attributeIcons]="['holiday.png']"
+        [attributeName]="'Holiday Dream'"
+        [attributeValue]="profile?.holidayDream"
+        [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
+      ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.schoolFromYouth"
+        [attributeIcons]="['school_from_youth.png']"
+        [attributeName]="'School From Youth'"
+        [attributeValue]="profile?.schoolFromYouth"
+        [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
+      ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.formerJobs"
+        [attributeIcons]="['former_job.png']"
+        [attributeName]="'Former Jobs'"
+        [attributeValue]="profile?.formerJobs"
+        [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
+      ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.sideJobs"
+        [attributeIcons]="['side_job.png']"
+        [attributeName]="'Side Jobs'"
+        [attributeValue]="profile?.sideJobs"
+        [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
+      ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.drink"
+        [attributeIcons]="['drink.png']"
+        [attributeName]="'Drink'"
+        [attributeValue]="profile?.drink"
+        [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
+      ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.operatingSystem"
+        [attributeIcons]="['operating_system.png']"
+        [attributeName]="'Operating System'"
+        [attributeValue]="profile?.operatingSystem"
+        [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
+      ></app-attribute>
+      <app-attribute
+        *ngIf="profile?.vehicle"
+        [attributeIcons]="['vehicle.png']"
+        [attributeName]="'Vehicle'"
+        [attributeValue]="profile?.vehicle"
+        [attributeType]="'Text'"
+        [colorPrimary]="colorVariable"
+        [colorSecondary]="colorVariableDark"
+      ></app-attribute>
     </div>
     <div style="min-height: 50px; width: 100%; clear: both"></div>
     <div class="mt-4 w-full justify-start">

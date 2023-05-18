@@ -33,24 +33,36 @@ export class ProfilePage implements OnInit, OnDestroy {
     const profileIdFromRoute = routeParams.get('id');
     this.subscriptions.add(
       this.communicationService
-        .waitForPersons()
+        .waitForStudents()
         .subscribe(async (persons: Person[]) => {
-          this.profile = persons.find(
-            (x) => x.personid == profileIdFromRoute
-          );
           if (!this.profile) {
-            return;
+            this.profile = persons.find(
+              (x) => x.personid == profileIdFromRoute
+            );
+            if (!this.profile) {
+              return;
+            } else {
+              this.initValues(this.profile);
+            }
           }
-          this.colorVariable = genderToColorTransparent(this.profile?.gender);
-          this.colorVariableDark = genderToColorDarkTransparent(
-            this.profile?.gender
-          );
-          this.profile.age = calculateAge(
-            new Date(String(this.profile?.birthday))
-          );
         })
     );
-
+    this.subscriptions.add(
+      this.communicationService
+        .waitForTeachers()
+        .subscribe(async (persons: Person[]) => {
+          if (!this.profile) {
+            this.profile = persons.find(
+              (x) => x.personid == profileIdFromRoute
+            );
+            if (!this.profile) {
+              return;
+            } else {
+              this.initValues(this.profile);
+            }
+          }
+        })
+    );
     this.communicationService.requestComments(profileIdFromRoute);
     this.subscriptions.add(
       this.communicationService
@@ -59,6 +71,16 @@ export class ProfilePage implements OnInit, OnDestroy {
           this.comments = comments;
         })
     );
+  }
+
+  initValues(person: Person) {
+    this.colorVariable = genderToColorTransparent(person.gender);
+    this.colorVariableDark = genderToColorDarkTransparent(person.gender);
+    if (!person.age) {
+      try {
+        person.age = calculateAge(new Date(String(person.birthday)));
+      } catch (e) {}
+    }
   }
 
   ngOnDestroy() {

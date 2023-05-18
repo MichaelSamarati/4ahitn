@@ -9,17 +9,36 @@ import { Subscription } from 'rxjs';
   styleUrls: ['tab2.page.scss'],
 })
 export class Tab2Page implements OnInit {
-  persons: Person[];
-  subscription = new Subscription();
+  students: Person[];
+  teachers: Person[];
+  subscriptions = new Subscription();
 
   constructor(private communicationService: CommunicationService) {}
 
   ngOnInit() {
-    this.communicationService.initiateActivePersons();
-    this.subscription = this.communicationService
-      .getActivePersons()
-      .subscribe((persons: Person[]) => {
-        this.persons = persons;
-      });
+    this.communicationService.initiateActiveStudents();
+    this.subscriptions.add(
+      this.communicationService
+        .getActiveStudents()
+        .subscribe((students: Person[]) => {
+          this.students = students;
+        })
+    );
+    this.subscriptions.add(
+      this.communicationService
+        .areStudentsFinished()
+        .subscribe((areStudentsFinished: boolean) => {
+          if (areStudentsFinished) {
+            this.communicationService.initiateActiveTeachers();
+          }
+        })
+    );
+    this.subscriptions.add(
+      this.communicationService
+        .getActiveTeachers()
+        .subscribe((teachers: Person[]) => {
+          this.teachers = teachers;
+        })
+    );
   }
 }

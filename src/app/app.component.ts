@@ -9,18 +9,29 @@ import { CommunicationService } from './services/communication.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  persons: Person[];
+  // students: Person[];
+  // teachers: Person[];
   subscriptions = new Subscription();
+
   constructor(private communicationService: CommunicationService) {}
 
   ngOnInit() {
-    this.communicationService.resetStudents();
+    this.communicationService.reset();
     this.communicationService.requestStudents();
+    // this.communicationService.requestTeachers();
     this.subscriptions.add(
       this.communicationService
-        .waitForPersons()
-        .subscribe((persons: Person[]) => {
-          this.persons = persons;
+        .waitForStudents()
+        .subscribe((students: Person[]) => {
+          // this.students = students;
+        })
+    );
+    this.communicationService.requestTeachers();
+    this.subscriptions.add(
+      this.communicationService
+        .waitForTeachers()
+        .subscribe((teachers: Person[]) => {
+          // this.teachers = teachers;
         })
     );
   }

@@ -6,7 +6,7 @@ import { CommunicationService } from '../services/communication.service';
 import { Subscription } from 'rxjs';
 import { Comment } from '../model/comment';
 import { Preferences } from '@capacitor/preferences';
-import { genderToColorDark, genderToColorDarkTransparent } from '../logic/color';
+import { genderToColorDarkTransparent } from '../logic/color';
 
 @Component({
   selector: 'app-commentform',
@@ -34,22 +34,47 @@ export class CommentformPage implements OnInit {
     const profileIdFromRoute = routeParams.get('id');
     this.subscriptions.add(
       this.communicationService
-        .waitForPersons()
-        .subscribe((persons: Person[]) => {
-          this.profile = persons.find((x) => x.personid == profileIdFromRoute);
-          this.imageName =
-            this.profile?.gender == 'f'
-              ? 'female_background.png'
-              : 'male_background.png';
+        .waitForStudents()
+        .subscribe(async (persons: Person[]) => {
+          if (!this.profile) {
+            this.profile = persons.find(
+              (x) => x.personid == profileIdFromRoute
+            );
+            if (!this.profile) {
+              return;
+            } else {
+              this.initValues(this.profile);
+            }
+          }
         })
     );
-
+    this.subscriptions.add(
+      this.communicationService
+        .waitForTeachers()
+        .subscribe(async (persons: Person[]) => {
+          if (!this.profile) {
+            this.profile = persons.find(
+              (x) => x.personid == profileIdFromRoute
+            );
+            if (!this.profile) {
+              return;
+            } else {
+              this.initValues(this.profile);
+            }
+          }
+        })
+    );
     this.name = await this.getPseudonym();
     if (this.name == '') {
       this.setPseudonym('anonymous' + Math.floor(Math.random() * 100));
       this.name = await this.getPseudonym();
     }
     this.colorVariable = genderToColorDarkTransparent(this.profile?.gender);
+  }
+
+  initValues(person: Person) {
+    this.imageName =
+      person.gender == 'f' ? 'female_background.png' : 'male_background.png';
   }
 
   ngOnDestroy() {
