@@ -1,10 +1,9 @@
 {
   "name": "4ahitn",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Michael Samarati",
+  "homepage": "https://example.com/",
   "scripts": {
-    "resources": "cordova-res ios && cordova-res android && node scripts/resources.js",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

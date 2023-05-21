@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { isStringValidColor } from '../logic/color';
 
 @Component({
   selector: 'app-attribute',
@@ -21,12 +22,7 @@ export class AttributeComponent implements OnInit {
 
   ngOnInit() {
     this.nameTextSize = (this.attributeName?.length || 0)>=26?15:17;
-    this.isColorValid = this.isColor(this.attributeValue!);
+    this.isColorValid = isStringValidColor(this.attributeValue!);
   }
 
-  isColor(color: string) {
-    const s = new Option().style;
-    s.color = color;
-    return s.color !== '';
-  }
 }

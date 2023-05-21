@@ -119,9 +119,16 @@ function genderToColorDarkTransparent(gender: string | undefined) {
   return colorVariable;
 }
 
+function isStringValidColor(color: string) {
+  const s = new Option().style;
+  s.color = color;
+  return s.color !== '';
+}
+
 export {
   genderToColor,
   genderToColorTransparent,
   genderToColorDark,
   genderToColorDarkTransparent,
+  isStringValidColor,
 };

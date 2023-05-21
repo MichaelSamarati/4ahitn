@@ -1,3 +1,5 @@
+import { isStringValidColor } from './color';
+
 const defaultColor = '#777777';
 
 var favouriteSubjectMap = new Map<string, string>();
@@ -26,6 +28,9 @@ burgerPizzaAvocadoMap.set('🥑', '#87a922');
 
 function favouriteColorToColor(favouriteColor: string) {
   if (!favouriteColor) {
+    return defaultColor;
+  }
+  if (!isStringValidColor(favouriteColor)) {
     return defaultColor;
   }
   return favouriteColor;
