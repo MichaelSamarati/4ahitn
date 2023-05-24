@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: '4ahitn',
+  appId: 'io.classcornerapp',
+  appName: 'ClassCorner.',
   webDir: 'www',
   bundledWebRuntime: false
 };

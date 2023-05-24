@@ -265,6 +265,7 @@
     </div>
     <ion-fab slot="fixed" vertical="bottom" horizontal="end" class="fixed">
       <ion-fab-button
+        [style]="'--ion-color-base: '+colorVariableCommentButton+' !important'"
         color="light"
         [routerLink]="['./comment']"
         [state]="{profile: profile}"

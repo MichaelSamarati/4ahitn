@@ -7,6 +7,8 @@ import { CommunicationService } from '../services/communication.service';
 import { Subscription } from 'rxjs';
 import { Comment } from '../model/comment';
 import {
+  genderToColor,
+  genderToColorDark,
   genderToColorDarkTransparent,
   genderToColorTransparent,
 } from '../logic/color';
@@ -22,6 +24,7 @@ export class ProfilePage implements OnInit, OnDestroy {
   subscriptions = new Subscription();
   colorVariable: string;
   colorVariableDark: string;
+  colorVariableCommentButton: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -76,6 +79,7 @@ export class ProfilePage implements OnInit, OnDestroy {
   initValues(person: Person) {
     this.colorVariable = genderToColorTransparent(person.gender);
     this.colorVariableDark = genderToColorDarkTransparent(person.gender);
+    this.colorVariableCommentButton = genderToColorDark(person.gender);
     if (!person.age) {
       try {
         person.age = calculateAge(new Date(String(person.birthday)));
