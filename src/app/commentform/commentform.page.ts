@@ -86,7 +86,7 @@ export class CommentformPage implements OnInit {
     const comment: Comment = new Comment(
       undefined,
       this.name || '',
-      this.message,
+      this.message || '',
       new Date(),
       this.profile?.personid
     );
