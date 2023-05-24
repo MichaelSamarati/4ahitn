@@ -12,7 +12,7 @@ export class MovingBackgroundComponent implements OnInit {
   @Input() color: string ;
   constructor() {
     this.circles = [];
-    this.circleCount = 120;
+    this.circleCount = 150;
     this.updateDeltaTime = 16;
   }
 
