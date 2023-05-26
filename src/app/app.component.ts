@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Person } from './model/person';
 import { Subscription } from 'rxjs';
 import { CommunicationService } from './services/communication.service';
+import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent {
   // teachers: Person[];
   subscriptions = new Subscription();
 
-  constructor(private communicationService: CommunicationService) {}
+  constructor(private socket: Socket, private communicationService: CommunicationService) {}
 
   ngOnInit() {
     this.communicationService.reset();
@@ -38,5 +39,6 @@ export class AppComponent {
 
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
+    this.socket.disconnect();
   }
 }
