@@ -14,7 +14,10 @@ export class AppComponent {
   // teachers: Person[];
   subscriptions = new Subscription();
 
-  constructor(private socket: Socket, private communicationService: CommunicationService) {}
+  constructor(
+    private socket: Socket,
+    private communicationService: CommunicationService
+  ) {}
 
   ngOnInit() {
     this.communicationService.reset();
@@ -35,6 +38,7 @@ export class AppComponent {
           // this.teachers = teachers;
         })
     );
+    this.communicationService.waitForDisconnect();
   }
 
   ngOnDestroy() {

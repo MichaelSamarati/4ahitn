@@ -167,4 +167,10 @@ export class CommunicationService {
     });
     return this.comment_insert.asObservable();
   }
+
+  waitForDisconnect() {
+    this.socket.on('disconnect', () => {
+      console.log('Disconnect!');
+    });
+  }
 }

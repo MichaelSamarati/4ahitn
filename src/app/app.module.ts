@@ -12,8 +12,9 @@ import { CommonModule } from '@angular/common';
 import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
 
 const config: SocketIoConfig = {
-  url: 'http://178.190.95.202:80',
-  options: {},
+  url: 'http://samarati.dynamic-dns.net:80',
+  options: {
+  },
 };
 
 @NgModule({
