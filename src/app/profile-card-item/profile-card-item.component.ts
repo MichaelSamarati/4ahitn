@@ -17,23 +17,6 @@ export class ProfileCardItemComponent implements OnInit {
 
   ngOnInit() {
     this.setOpacityStuff();
-    // this.router.events.subscribe((val) => {
-    //   const profileCardItemComponents = document.getElementsByClassName(
-    //     'profileCardItemComponent'
-    //   );
-    //   for (let i = 0; i < profileCardItemComponents.length; i++) {
-    //     let c = profileCardItemComponents[i];
-    //     c.classList.add('opacity-0');
-    //     c.addEventListener(
-    //       'animationend',
-    //       () => {
-    //         c.classList.remove('opacity-0');
-    //       },
-    //       { once: true }
-    //     );
-    //   }
-    // });
-
     this.colorVariable = genderToColorTransparent(this.profile?.gender);
   }
 

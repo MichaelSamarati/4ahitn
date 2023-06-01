@@ -4,7 +4,10 @@
     class="flex flex-col p-2 w-full min-h-full md:w-medium-size-page mx-auto"
   >
     <div class="mt-8"></div>
-    <div class="mt-2 mb-2 text-3xl flex justify-center font-bold">
+    <div
+      [@visibilityAnimation]="'visible'"
+      class="mt-2 mb-2 text-3xl flex justify-center font-bold"
+    >
       4AHITN Schüler
     </div>
     <ion-list
@@ -19,7 +22,7 @@
 
     <div class="mt-16"></div>
     <div
-      *ngIf="teachers.length"
+      [@visibilityAnimation]="teachers.length ? 'visible':'invisible'"
       class="mt-2 mb-2 text-3xl flex justify-center font-bold"
     >
       4AHITN Lehrer

@@ -10,8 +10,6 @@ import { Socket } from 'ngx-socket-io';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  // students: Person[];
-  // teachers: Person[];
   subscriptions = new Subscription();
 
   constructor(
@@ -22,12 +20,10 @@ export class AppComponent {
   ngOnInit() {
     this.communicationService.reset();
     this.communicationService.requestStudents();
-    // this.communicationService.requestTeachers();
     this.subscriptions.add(
       this.communicationService
         .waitForStudents()
         .subscribe((students: Person[]) => {
-          // this.students = students;
         })
     );
     this.communicationService.requestTeachers();
@@ -35,7 +31,6 @@ export class AppComponent {
       this.communicationService
         .waitForTeachers()
         .subscribe((teachers: Person[]) => {
-          // this.teachers = teachers;
         })
     );
     this.communicationService.waitForDisconnect();
