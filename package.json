@@ -13,6 +13,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "^16.0.4",
     "@angular/common": "^15.0.0",
     "@angular/core": "^15.0.0",
     "@angular/forms": "^15.0.0",
@@ -43,7 +44,6 @@
     "@angular-eslint/eslint-plugin-template": "^15.0.0",
     "@angular-eslint/schematics": "^15.0.0",
     "@angular-eslint/template-parser": "^15.0.0",
-    "@angular/cli": "^15.0.0",
     "@angular/compiler": "^15.0.0",
     "@angular/compiler-cli": "^15.0.0",
     "@angular/language-service": "^15.0.0",
