@@ -2,11 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { Person } from '../model/person';
 import { CommunicationService } from '../services/communication.service';
 import { Subscription } from 'rxjs';
+import {trigger,state,style,animate,transition}from '@angular/animations';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
+  animations: [
+    trigger('visibilityAnimation', [
+      state('visible', 
+        style({ opacity: 1})
+      ),
+      state('invisible', 
+        style({ opacity: 0 })
+      ),
+      transition('visible <=> invisible', [
+        animate('0.5s ease-out')
+      ]), 
+    ])]
 })
 export class Tab2Page implements OnInit {
   students: Person[];

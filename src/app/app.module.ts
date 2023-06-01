@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { CommonModule } from '@angular/common';
 import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const config: SocketIoConfig = {
   url: 'http://samarati.dynamic-dns.net:80',
@@ -24,6 +25,7 @@ const config: SocketIoConfig = {
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    BrowserAnimationsModule,
     SocketIoModule.forRoot(config),
   ],
   providers: [

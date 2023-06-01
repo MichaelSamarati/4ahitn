@@ -4,16 +4,6 @@
     animation-direction: alternate;
 }
 
-// @keyframes coloranimation {
-//     0% {
-//         background: linear-gradient(180deg, #2c2c2c, #000000);
-//     }
-//     100% {
-//         background: linear-gradient(180deg, #52395d, #521560);;
-//     }
-// }
-  
-
 @keyframes coloranimation {
     0% {
         filter: hue-rotate(0deg);

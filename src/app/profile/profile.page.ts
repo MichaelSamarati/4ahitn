@@ -7,7 +7,6 @@ import { CommunicationService } from '../services/communication.service';
 import { Subscription } from 'rxjs';
 import { Comment } from '../model/comment';
 import {
-  genderToColor,
   genderToColorDark,
   genderToColorDarkTransparent,
   genderToColorTransparent,
