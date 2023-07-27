@@ -13,9 +13,8 @@ import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const config: SocketIoConfig = {
-  url: 'https://samarati.dynamic-dns.net:443',
-  options: {
-  },
+  url: 'https://samarati.dynamic-dns.net:5000',
+  options: {},
 };
 
 @NgModule({
